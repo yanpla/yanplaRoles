@@ -1,5 +1,8 @@
 using MiraAPI.Roles;
 using UnityEngine;
+using yanplaRoles.Options.Roles;
+using MiraAPI.GameOptions;
+
 
 namespace yanplaRoles.Roles.Jackal;
 
@@ -16,7 +19,7 @@ public class Jackal : ImpostorRole, ICustomRole
     {
         UseVanillaKillButton = true,
         CanGetKilled = true,
-        CanUseVent = true,
+        CanUseVent = OptionGroupSingleton<JackalOptions>.Instance.JackalCanVent.Value,
     };
 
     public override void SpawnTaskHeader(PlayerControl playerControl)
