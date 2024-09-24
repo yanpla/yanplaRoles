@@ -17,7 +17,7 @@
     </ItemGroup>
 
     <ItemGroup>
-		<EmbeddedResource Include="Resources\FortniteBanner.jpeg" />
+		<EmbeddedResource Include="Resources\JesterBanner.png" />
 	</ItemGroup>
 
     <Target Name="Copy" AfterTargets="Build" Condition="'$(AmongUs)' != ''">
