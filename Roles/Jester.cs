@@ -20,7 +20,13 @@ public class Jester : CrewmateRole, ICustomRole
         OptionsScreenshot = Assets.JesterBanner,
         TasksCountForProgress = false,
         CanUseVent = OptionGroupSingleton<JesterOptions>.Instance.JesterCanVent.Value,
+        CanGetKilled = true,
     };
+
+    public string GetCustomEjectionMessage(NetworkedPlayerInfo player)
+    {
+        return $"The joke's on you! {player.PlayerName} fooled everyone!";
+    }
 
     public override void OnDeath(DeathReason reason)
     {
