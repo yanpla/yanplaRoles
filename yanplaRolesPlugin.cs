@@ -13,7 +13,7 @@ namespace yanplaRoles;
 [BepInProcess("Among Us.exe")]
 [BepInDependency(ReactorPlugin.Id)]
 [ReactorModFlags(ModFlags.RequireOnAllClients)]
-public partial class ExamplePlugin : BasePlugin, IMiraPlugin
+public partial class YanplaRolesPlugin : BasePlugin, IMiraPlugin
 {
     public Harmony Harmony { get; } = new(Id);
     public string OptionsTitleText => "yanplaRoles";
