@@ -1,10 +1,13 @@
 # yanplaRoles
-
-`yanplaRoles` is a mod for the game Among Us that introduces new roles, currently only the Jester role is working correctly.
+`yanplaRoles` is a mod for the game Among Us that introduces new roles, currently there are the Jester and Sheriff roles.
 
 ### Jester
 
 The Jester is a neutral role that wins the game if they are voted out (exiled) by the other players.
+
+### Sheriff
+
+The Sheriff is a crewmate role that can kill Impostors. However, if the Sheriff kills a Crewmate, the Sheriff dies instead.
 
 ## Credits
 - **[MiraApi](https://github.com/All-Of-Us-Mods/MiraAPI)**: Among Us modding API and utility library.
