@@ -15,5 +15,6 @@ public class Sheriff : CrewmateRole, ICustomRole
     public CustomRoleConfiguration Configuration => new CustomRoleConfiguration(this)
     {
         CanUseVent = false,
+        OptionsScreenshot = Assets.SheriffBanner,
     };
 }
