@@ -18,6 +18,7 @@
 
     <ItemGroup>
 		<EmbeddedResource Include="Resources\JesterBanner.png" />
+        <EmbeddedResource Include="Resources\ExampleButton.png" />
 	</ItemGroup>
 
     <Target Name="Copy" AfterTargets="Build" Condition="'$(AmongUs)' != ''">

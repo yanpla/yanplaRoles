@@ -1,4 +1,4 @@
-using yanplaRoles.Roles.Jester;
+using yanplaRoles.Roles;
 using MiraAPI.GameOptions;
 using System;
 using MiraAPI.GameOptions.OptionTypes;
