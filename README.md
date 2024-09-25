@@ -1,5 +1,5 @@
 # yanplaRoles
-`yanplaRoles` is a mod for the game Among Us that introduces new roles, currently there are the Jester and Sheriff roles.
+`yanplaRoles` is a mod for the game Among Us that introduces new roles and modifiers, currently there are the Jester and Sheriff roles, and the Captain Modifier.
 
 ### Jester
 
@@ -9,10 +9,15 @@ The Jester is a neutral role that wins the game if they are voted out (exiled) b
 
 The Sheriff is a crewmate role that can kill Impostors. However, if the Sheriff kills a Crewmate, the Sheriff dies instead.
 
+### Captain
+
+The Captain is a modifier that grants the ability to call an emergency meeting from anywhere on the map, without needing to be at the emergency button.
+
 ## Credits
-- **[MiraApi](https://github.com/All-Of-Us-Mods/MiraAPI)**: Among Us modding API and utility library.
-- **[Reactor](https://github.com/NuclearPowered/Reactor)**: Modding api for Among Us
+- **[MiraApi](https://github.com/All-Of-Us-Mods/MiraAPI)**: Among Us modding API and utility library, Captain Modifier.
+- **[Reactor](https://github.com/NuclearPowered/Reactor)**: Modding api for Among Us.
 - **[BepInEx](https://github.com/BepInEx/BepInEx)**: A plugin framework for Unity games, used for loading and managing mods.
+- **[TheOtherRoles](https://github.com/TheOtherRolesAU/TheOtherRoles)**: Captain's Emergency Button.
 
 ## Contributing
 
