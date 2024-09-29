@@ -14,6 +14,7 @@ public class Jester : CrewmateRole, ICustomRole
     public string RoleLongDescription => RoleDescription;
     public Color RoleColor => new Color32(236, 98, 165, byte.MaxValue);
     public ModdedRoleTeams Team => ModdedRoleTeams.Neutral;
+    public int MaxPlayers => 1;
 
     public CustomRoleConfiguration Configuration => new CustomRoleConfiguration(this)
     {
