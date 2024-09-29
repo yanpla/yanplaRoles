@@ -1,9 +1,13 @@
 # yanplaRoles
-`yanplaRoles` is a mod for the game Among Us that introduces new roles and modifiers, currently there are the Jester and Sheriff roles, and the Captain Modifier.
+`yanplaRoles` is a mod for the game Among Us that introduces new roles and modifiers, currently there are the Jester, Executioner and Sheriff roles, and the Captain Modifier.
 
 ### Jester
 
 The Jester is a neutral role that wins the game if they are voted out (exiled) by the other players.
+
+### Executioner
+
+The Executioner is a neutral role that wins the game if their target is voted out (exiled) by the other players. (If the Executioner's target dies before they get exiled, the executioner becomes a crewmate.)
 
 ### Sheriff
 
