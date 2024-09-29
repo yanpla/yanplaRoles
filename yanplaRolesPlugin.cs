@@ -6,6 +6,7 @@ using MiraAPI.PluginLoading;
 using Reactor;
 using Reactor.Networking;
 using Reactor.Networking.Attributes;
+using Reactor.Utilities;
 
 namespace yanplaRoles;
 
@@ -20,6 +21,7 @@ public partial class YanplaRolesPlugin : BasePlugin, IMiraPlugin
     public ConfigFile GetConfigFile() => Config;
     public override void Load()
     {
+        ReactorCredits.Register("yanplaRoles", "v0.0.3", false, ReactorCredits.AlwaysShow);
         Harmony.PatchAll();
     }
 }

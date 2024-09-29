@@ -2,6 +2,8 @@ using yanplaRoles.Modifiers;
 using MiraAPI.Hud;
 using MiraAPI.Utilities;
 using MiraAPI.Utilities.Assets;
+using MiraAPI.GameOptions;
+using yanplaRoles.Options.Modifiers;
 using UnityEngine;
 
 namespace yanplaRoles.Buttons;
@@ -15,7 +17,7 @@ public class MeetingButton : CustomActionButton
 
     public override float EffectDuration => 0;
 
-    public override int MaxUses => 2;
+    public override int MaxUses => (int)OptionGroupSingleton<ModifierOptions>.Instance.CaptainAbilityUses;
 
     public override LoadableAsset<Sprite> Sprite => Assets.EmergencyButton;
 

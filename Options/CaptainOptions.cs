@@ -13,4 +13,7 @@ public class ModifierOptions : AbstractOptionGroup
         
     [ModdedNumberOption("Captain Chance", min: 0, max: 100, 10f, MiraNumberSuffixes.Percent)]
     public float CaptainChance { get; set; } = 100f;
+
+    [ModdedNumberOption("Captain Ability uses", min: 1, max: 10, 1f)]
+    public float CaptainAbilityUses { get; set; } = 1f;
 }
