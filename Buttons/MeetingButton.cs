@@ -23,7 +23,7 @@ public class MeetingButton : CustomActionButton
 
     public override bool Enabled(RoleBehaviour? role)
     {
-        return PlayerControl.LocalPlayer != null && PlayerControl.LocalPlayer.HasModifier<CaptainModifier>();
+        return PlayerControl.LocalPlayer != null && PlayerControl.LocalPlayer.HasModifier<Captain>();
     }
 
     protected override void OnClick()
@@ -42,9 +42,9 @@ public class MeetingButton : CustomActionButton
         minigame.transform.localPosition = new Vector3(0f, 0f, -50f);
         minigame.Begin(null);
 
-        if (UsesLeft == 0 && PlayerControl.LocalPlayer.HasModifier<CaptainModifier>())
+        if (UsesLeft == 0 && PlayerControl.LocalPlayer.HasModifier<Captain>())
         {
-            PlayerControl.LocalPlayer.RpcRemoveModifier<CaptainModifier>();
+            PlayerControl.LocalPlayer.RpcRemoveModifier<Captain>();
         }
     }
 }

@@ -6,7 +6,7 @@ using yanplaRoles.Options.Modifiers;
 namespace yanplaRoles.Modifiers;
 
 [RegisterModifier]
-public class CaptainModifier : GameModifier
+public class Captain : GameModifier
 {
     public override string ModifierName => "Captain";
 
