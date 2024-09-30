@@ -21,7 +21,7 @@ public partial class YanplaRolesPlugin : BasePlugin, IMiraPlugin
     public ConfigFile GetConfigFile() => Config;
     public override void Load()
     {
-        ReactorCredits.Register("yanplaRoles", "v0.0.3", false, ReactorCredits.AlwaysShow);
+        ReactorCredits.Register("yanplaRoles", "v0.0.4", false, ReactorCredits.AlwaysShow);
         Harmony.PatchAll();
     }
 }
