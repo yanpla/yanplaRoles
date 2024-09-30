@@ -1,7 +1,7 @@
 using MiraAPI.Roles;
 using UnityEngine;
 
-namespace yanplaRoles.Roles;
+namespace yanplaRoles.Roles.Crewmate;
 
 [RegisterCustomRole]
 public class Sheriff : CrewmateRole, ICustomRole

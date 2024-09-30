@@ -1,4 +1,4 @@
-using yanplaRoles.Roles;
+using yanplaRoles.Roles.Neutral;
 using MiraAPI.GameOptions;
 using System;
 using MiraAPI.GameOptions.OptionTypes;

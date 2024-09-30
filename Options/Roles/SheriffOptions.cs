@@ -1,4 +1,4 @@
-using yanplaRoles.Roles;
+using yanplaRoles.Roles.Crewmate;
 using MiraAPI.GameOptions;
 using MiraAPI.Utilities;
 using System;

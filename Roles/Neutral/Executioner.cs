@@ -8,7 +8,7 @@ using yanplaRoles.Modifiers;
 using MiraAPI.Utilities;
 using Il2CppSystem.Runtime.InteropServices;
 
-namespace yanplaRoles.Roles;
+namespace yanplaRoles.Roles.Neutral;
 
 [RegisterCustomRole]
 public class Executioner : CrewmateRole, ICustomRole

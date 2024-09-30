@@ -4,7 +4,7 @@ using UnityEngine;
 using yanplaRoles.CustomGameOverReasons;
 using yanplaRoles.Options.Roles;
 
-namespace yanplaRoles.Roles;
+namespace yanplaRoles.Roles.Neutral;
 
 [RegisterCustomRole]
 public class Jester : CrewmateRole, ICustomRole
