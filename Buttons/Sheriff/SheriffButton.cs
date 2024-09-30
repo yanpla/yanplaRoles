@@ -18,7 +18,7 @@ public class SheriffButton : CustomActionButton<PlayerControl>
 
     public override bool Enabled(RoleBehaviour? role)
     {
-        return role is Roles.Sheriff; // only show button when the player has Sheriff role.
+        return role is Roles.Crewmate.Sheriff; // only show button when the player has Sheriff role.
     }
     protected override void OnClick()
     {

@@ -34,12 +34,22 @@ public class Executioner : CrewmateRole, ICustomRole
             foreach (var player in PlayerControl.AllPlayerControls)
             {
                 if (!player.HasModifier<ExecutionerTarget>()) continue;
-
                 target = player;
-                target.SetName("(TARGET) " + player.Data.PlayerName);
+                target.cosmetics.nameText.color = Color.black;
                 break;
             }
-        } 
+        }
+        else if (MeetingHud.Instance != null)
+        {
+            UpdateMeeting(MeetingHud.Instance, target);
+        }
+    }
+
+    private static void UpdateMeeting(MeetingHud __instance, PlayerControl target)
+    {
+        foreach (var player in __instance.playerStates)
+            if (player.TargetPlayerId == target.PlayerId)
+                player.NameText.color = Color.black;
     }
 
     public bool IsModifierApplicable(BaseModifier modifier){

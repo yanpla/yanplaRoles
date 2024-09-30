@@ -4,7 +4,7 @@ using UnityEngine;
 using MiraAPI.Modifiers.Types;
 using yanplaRoles.Options.Modifiers;
 using yanplaRoles.CustomGameOverReasons;
-using yanplaRoles.Roles;
+using yanplaRoles.Roles.Neutral;
 using MiraAPI.Roles;
 
 namespace yanplaRoles.Modifiers;
