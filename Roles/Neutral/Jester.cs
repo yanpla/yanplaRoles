@@ -1,7 +1,9 @@
 using MiraAPI.GameOptions;
+using MiraAPI.Modifiers;
 using MiraAPI.Roles;
 using UnityEngine;
 using yanplaRoles.CustomGameOverReasons;
+using yanplaRoles.Modifiers;
 using yanplaRoles.Options.Roles;
 
 namespace yanplaRoles.Roles.Neutral;
@@ -40,5 +42,9 @@ public class Jester : CrewmateRole, ICustomRole
     public override bool DidWin(GameOverReason gameOverReason)
     {
         return gameOverReason == (GameOverReason)CustomGameOverReasonsEnum.JesterByVote;
+    }
+
+    public bool IsModifierApplicable(BaseModifier modifier){
+        return modifier is not ExecutionerTarget;
     }
 }

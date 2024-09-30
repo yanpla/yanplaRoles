@@ -4,6 +4,7 @@ using MiraAPI.Utilities.Assets;
 using UnityEngine;
 using yanplaRoles.Options.Roles;
 using MiraAPI.GameOptions;
+using MiraAPI.Networking;
 
 namespace yanplaRoles.Buttons.Sheriff;
 
@@ -26,19 +27,16 @@ public class SheriffButton : CustomActionButton<PlayerControl>
         
         if (Target == null)
         {
-            Debug.LogWarning("No target selected.");
             return;
         }
 
         if (Target.Data.Role.TeamType == RoleTeamTypes.Impostor)
         {
-            Debug.Log("Target is an Impostor. Sheriff is shooting the Impostor.");
-            PlayerControl.LocalPlayer.RpcMurderPlayer(Target, true);
+            PlayerControl.LocalPlayer.RpcCustomMurder(Target);
         }
         else
         {
-            Debug.Log("Target is not an Impostor. Sheriff is shooting themselves.");
-            PlayerControl.LocalPlayer.RpcMurderPlayer(PlayerControl.LocalPlayer, true);
+            PlayerControl.LocalPlayer.RpcCustomMurder(PlayerControl.LocalPlayer);
         }
     }
 
