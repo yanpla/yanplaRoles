@@ -26,7 +26,11 @@ public class ExecutionerTarget : GameModifier
 
     public override int GetAssignmentChance()
     {
-        return 100;
+        if (CustomRoleSingleton<Executioner>.Instance.GetCount() == 1)
+        {
+            return 100;
+        }
+        return 0;
     }
 
     public override void OnDeath(DeathReason reason)
