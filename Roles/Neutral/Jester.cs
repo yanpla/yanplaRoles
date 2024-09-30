@@ -26,6 +26,21 @@ public class Jester : CrewmateRole, ICustomRole
         CanGetKilled = true,
     };
 
+    public override void SpawnTaskHeader(PlayerControl playerControl)
+    {
+        // remove existing task header.
+    }
+
+    public override bool CanUse(IUsable usable)
+	{
+		if (!GameManager.Instance.LogicUsables.CanUse(usable, Player))
+		{
+			return false;
+		}
+		Console console = usable.Cast<Console>();
+		return !(console != null) || console.AllowImpostor;
+	}
+
     public string GetCustomEjectionMessage(NetworkedPlayerInfo player)
     {
         return $"The joke's on you! {player.PlayerName} fooled everyone!";

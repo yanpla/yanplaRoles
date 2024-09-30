@@ -23,6 +23,21 @@ public class Executioner : CrewmateRole, ICustomRole
         CanGetKilled = true,
     };
 
+    public override void SpawnTaskHeader(PlayerControl playerControl)
+    {
+        // remove existing task header.
+    }
+
+    public override bool CanUse(IUsable usable)
+	{
+		if (!GameManager.Instance.LogicUsables.CanUse(usable, Player))
+		{
+			return false;
+		}
+		Console console = usable.Cast<Console>();
+		return !(console != null) || console.AllowImpostor;
+	}
+
     PlayerControl target;
 
     public void HudUpdate(HudManager hudManager)
