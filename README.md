@@ -1,5 +1,5 @@
 # yanplaRoles
-`yanplaRoles` is a mod for the game Among Us that introduces new roles and modifiers, currently there are the Jester, Executioner, Snitch and Sheriff roles, and the Captain Modifier.
+`yanplaRoles` is a mod for the game Among Us that introduces new roles and modifiers, currently there are the Jester, Executioner, Snitch, Sheriff and Janitor roles, and the Captain Modifier.
 
 ### Jester
 
@@ -16,6 +16,10 @@ The Sheriff is a crewmate role that can kill Impostors. However, if the Sheriff 
 ### Snitch
 
 The Snitch is a crewmate role. If the snitch completes all their tasks, the Impostors's names will turn red for them.
+
+### Janitor
+
+The Janitor is an impostor role that can clean up bodies.
 
 ### Captain
 
