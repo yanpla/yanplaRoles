@@ -22,14 +22,14 @@ namespace yanplaRoles.Patches
             spriteRenderer.transform.SetParent(parent);
             spriteRenderer.transform.localScale = Vector3.zero;
 
-            if (parent.TryGetComponent(out PlayerVoteArea component))
+            PlayerVoteArea component = parent.GetComponent<PlayerVoteArea>();
+            if (component != null)
             {
                 spriteRenderer.material.SetInt(PlayerMaterial.MaskLayer, component.MaskLayer);
             }
 
             __instance.StartCoroutine(Effects.Bloop(index * 0.3f, spriteRenderer.transform, 1f, 0.5f));
             parent.GetComponent<VoteSpreader>().AddVote(spriteRenderer);
-
             return false;
         }
     }
