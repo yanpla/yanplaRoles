@@ -8,4 +8,7 @@ public static class Assets
     public static LoadableResourceAsset ExampleButton { get; } = new("yanplaRoles.Resources.ExampleButton.png");
     public static LoadableResourceAsset SheriffBanner { get; } = new("yanplaRoles.Resources.SheriffBanner.png");
     public static LoadableResourceAsset EmergencyButton { get; } = new("yanplaRoles.Resources.EmergencyButton.png");
+    public static LoadableResourceAsset CleanButton { get; } = new("yanplaRoles.Resources.CleanButton.png");
+    public static LoadableResourceAsset JanitorBanner { get; } = new("yanplaRoles.Resources.JanitorBanner.png");
+
 }
