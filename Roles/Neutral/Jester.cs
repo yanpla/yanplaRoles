@@ -1,3 +1,4 @@
+using AmongUs.GameOptions;
 using MiraAPI.GameOptions;
 using MiraAPI.Modifiers;
 using MiraAPI.Roles;
@@ -24,6 +25,7 @@ public class Jester : CrewmateRole, ICustomRole
         TasksCountForProgress = false,
         CanUseVent = OptionGroupSingleton<JesterOptions>.Instance.JesterCanVent.Value,
         CanGetKilled = true,
+        GhostRole = (RoleTypes)RoleId.Get<NeutralGhostRole>(),
     };
 
     public override void SpawnTaskHeader(PlayerControl playerControl)

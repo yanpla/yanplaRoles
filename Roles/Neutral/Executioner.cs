@@ -4,6 +4,7 @@ using yanplaRoles.CustomGameOverReasons;
 using MiraAPI.Modifiers;
 using yanplaRoles.Modifiers;
 using MiraAPI.Utilities;
+using AmongUs.GameOptions;
 
 namespace yanplaRoles.Roles.Neutral;
 
@@ -21,6 +22,7 @@ public class Executioner : CrewmateRole, ICustomRole
     {
         TasksCountForProgress = false,
         CanGetKilled = true,
+        GhostRole = (RoleTypes)RoleId.Get<NeutralGhostRole>(),
     };
 
     public override void SpawnTaskHeader(PlayerControl playerControl)
