@@ -8,6 +8,11 @@ namespace yanplaRoles.Patches
     {
         public static bool Prefix(HauntMenuMinigame __instance)
         {
+            if (__instance.HauntTarget.Data.IsDead)
+            {
+                __instance.FilterText.text = "Ghost";
+                return false;
+            }
             var role = __instance.HauntTarget.Data.Role;
             if (role is ICustomRole customRole)
             {
