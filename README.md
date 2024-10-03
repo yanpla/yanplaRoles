@@ -1,5 +1,5 @@
 # yanplaRoles
-`yanplaRoles` is a mod for the game Among Us that introduces new roles and modifiers, currently there are the Jester, Executioner, Snitch, Sheriff and Janitor roles, and the Captain Modifier.
+`yanplaRoles` is a mod for the game Among Us that introduces new roles and modifiers, currently there are the Jester, Executioner, Snitch, Sheriff and Janitor roles, and the Captain and Guesser Modifiers.
 
 ### Jester
 
@@ -24,6 +24,10 @@ The Janitor is an impostor role that can clean up bodies.
 ### Captain
 
 The Captain is a modifier that grants the ability to call an emergency meeting from anywhere on the map, without needing to be at the emergency button.
+
+### Guesser
+
+The Guesser is a modifier for Impostors that grants the ability to guess a player's role and kill them, however if the guesser's guess is wrong the guesser will die instead.
 
 ## Credits
 - **[MiraApi](https://github.com/All-Of-Us-Mods/MiraAPI)**: Among Us modding API and utility library, Captain Modifier.
