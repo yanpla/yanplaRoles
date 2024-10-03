@@ -6,9 +6,9 @@ using UnityEngine;
 
 namespace yanplaRoles.Options.Modifiers;
 
-public class ModifierOptions : AbstractOptionGroup
+public class AssassinOptions : AbstractOptionGroup
 { 
-    public override string GroupName => "Modifiers";
+    public override string GroupName => "Captain";
     public override Color GroupColor => new Color32(255, 215, 0, byte.MaxValue);
         
     [ModdedNumberOption("Captain Chance", min: 0, max: 100, 10f, MiraNumberSuffixes.Percent)]

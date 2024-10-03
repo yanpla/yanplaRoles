@@ -23,6 +23,9 @@
         <EmbeddedResource Include="Resources\EmergencyButton.png" />
         <EmbeddedResource Include="Resources\CleanButton.png" />
         <EmbeddedResource Include="Resources\JanitorBanner.png" />
+        <EmbeddedResource Include="Resources\CycleBack.png" />
+        <EmbeddedResource Include="Resources\CycleForward.png" />
+        <EmbeddedResource Include="Resources\Guess.png" />
 	</ItemGroup>
 
     <Target Name="Copy" AfterTargets="Build" Condition="'$(AmongUs)' != ''">

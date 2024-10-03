@@ -17,7 +17,7 @@ public class MeetingButton : CustomActionButton
 
     public override float EffectDuration => 0;
 
-    public override int MaxUses => (int)OptionGroupSingleton<ModifierOptions>.Instance.CaptainAbilityUses;
+    public override int MaxUses => (int)OptionGroupSingleton<AssassinOptions>.Instance.CaptainAbilityUses;
 
     public override LoadableAsset<Sprite> Sprite => Assets.EmergencyButton;
 
