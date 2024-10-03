@@ -4,17 +4,16 @@ using yanplaRoles.Roles.Impostor;
 using yanplaRoles.Buttons.Janitor;
 using MiraAPI.Hud;
 
-namespace yanplaRoles.Patches
+namespace yanplaRoles.Patches;
+
+[HarmonyPatch(typeof(KillButton), nameof(KillButton.DoClick))]
+public static class JanitorResetCooldownPatch
 {
-    [HarmonyPatch(typeof(KillButton), nameof(KillButton.DoClick))]
-    public static class JanitorResetCooldownPatch
+    public static void Postfix(KillButton __instance)
     {
-        public static void Postfix(KillButton __instance)
+        if (PlayerControl.LocalPlayer.Data.Role is Janitor)
         {
-            if (PlayerControl.LocalPlayer.Data.Role is Janitor)
-            {
-                CustomButtonSingleton<CleanButton>.Instance.ResetCooldownAndOrEffect();
-            }
+            CustomButtonSingleton<CleanButton>.Instance.ResetCooldownAndOrEffect();
         }
     }
 }
