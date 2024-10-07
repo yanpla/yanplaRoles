@@ -13,5 +13,6 @@ public static class Assets
     public static LoadableResourceAsset CycleBack { get; } = new("yanplaRoles.Resources.CycleBack.png");
     public static LoadableResourceAsset CycleForward { get; } = new("yanplaRoles.Resources.CycleForward.png");
     public static LoadableResourceAsset Guess { get; } = new("yanplaRoles.Resources.Guess.png");
+    public static LoadableResourceAsset Arrow { get; } = new("yanplaRoles.Resources.Arrow.png");
 
 }
