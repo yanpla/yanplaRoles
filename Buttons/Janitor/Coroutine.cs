@@ -12,7 +12,7 @@ namespace yanplaRoles.Buttons.Janitor
             var body = Helpers.GetBodyById(target);
             SpriteRenderer rend = body.bodyRenderers[0];
             Color initialColor = rend.color;
-            float duration = 5f;
+            float duration = 2.5f;
             float elapsed = 0f;
 
             while (elapsed < duration)

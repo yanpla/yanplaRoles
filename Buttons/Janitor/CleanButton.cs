@@ -1,9 +1,7 @@
-using MiraAPI.GameOptions;
 using MiraAPI.Hud;
 using MiraAPI.Utilities;
 using MiraAPI.Utilities.Assets;
 using UnityEngine;
-using yanplaRoles.Options.Roles;
 using yanplaRoles.rpc;
 
 namespace yanplaRoles.Buttons.Janitor;
@@ -12,10 +10,37 @@ namespace yanplaRoles.Buttons.Janitor;
 public class CleanButton : CustomActionButton<DeadBody>
 {
     public override string Name => "";
-    public override float Cooldown => OptionGroupSingleton<JanitorOptions>.Instance.CleanCooldown;
+    public override float Cooldown => 30f;
     public override float EffectDuration => 0f;
-    public override int MaxUses => (int)OptionGroupSingleton<JanitorOptions>.Instance.CleanUses;
+    public override int MaxUses => 0;
     public override LoadableAsset<Sprite> Sprite => Assets.CleanButton;
+
+    public override void FixedUpdateHandler(PlayerControl playerControl)
+    {
+        if (Timer >= 0)
+        {
+            Timer = PlayerControl.LocalPlayer.killTimer;
+        }
+        else if (HasEffect && EffectActive)
+        {
+            EffectActive = false;
+            Timer = Cooldown;
+            OnEffectEnd();
+        }
+
+        if (CanUse())
+        {
+            Button?.SetEnabled();
+        }
+        else
+        {
+            Button?.SetDisabled();
+        }
+
+        Button?.SetCoolDown(Timer, EffectActive ? EffectDuration : Cooldown);
+
+        FixedUpdate(playerControl);
+    }
 
     protected override void OnClick()
     {

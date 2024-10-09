@@ -19,11 +19,4 @@ public class Janitor : ImpostorRole, ICustomRole
         CanUseVent = OptionGroupSingleton<JanitorOptions>.Instance.JanitorCanVent.Value,
         OptionsScreenshot = Assets.JanitorBanner,
     };
-
-    public override void SpawnTaskHeader(PlayerControl playerControl)
-    {
-        // remove existing task header.
-    }
-
-
 }
