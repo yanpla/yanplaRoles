@@ -45,14 +45,15 @@ public class ExecutionerTarget : GameModifier
 
         if (executioner != null)
         {
-            var roleManager = RoleManager.Instance;
-            roleManager.SetRole(executioner, AmongUs.GameOptions.RoleTypes.Crewmate);
-            PlayerControl.AllPlayerControls.ForEach((System.Action<PlayerControl>)PlayerNameColor.Set);
-
             if (reason == DeathReason.Exile)
             {
                 GameManager.Instance.RpcEndGame((GameOverReason)CustomGameOverReasonsEnum.ExecutionerWin, false);
+                return;
             }
+            var roleManager = RoleManager.Instance;
+            roleManager.SetRole(executioner, AmongUs.GameOptions.RoleTypes.Crewmate);
+            Utils.SavePlayerRole(executioner.Data.PlayerId, executioner.Data.Role);
+            PlayerControl.AllPlayerControls.ForEach((System.Action<PlayerControl>)PlayerNameColor.Set);
         }
     }
 

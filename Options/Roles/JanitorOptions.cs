@@ -3,8 +3,6 @@ using MiraAPI.GameOptions;
 using System;
 using MiraAPI.GameOptions.OptionTypes;
 using UnityEngine;
-using MiraAPI.GameOptions.Attributes;
-using MiraAPI.Utilities;
 
 namespace yanplaRoles.Options.Roles;
 

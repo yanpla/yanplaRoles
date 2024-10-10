@@ -21,10 +21,14 @@ public class NeutralGhostRole : ImpostorGhostRole, ICustomRole
         HideSettings = true,
     };
 
+    public override void SpawnTaskHeader(PlayerControl playerControl)
+    {
+        // remove existing task header.
+    }
+
     public override bool DidWin(GameOverReason gameOverReason)
     {
-        Role = PlayerControl.LocalPlayer.Data.RoleWhenAlive.value;
-        return RoleManager.Instance.GetRole(Role).DidWin(gameOverReason);
+        return false;
     }
 
 }

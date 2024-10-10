@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace yanplaRoles;
@@ -46,5 +47,31 @@ public static class Utils{
             if (item.gameObject == null) return;
             Object.Destroy(item.gameObject);
         }
+    }
+    
+    private static Dictionary<byte, List<RoleBehaviour>> playerRolesHistory = new Dictionary<byte, List<RoleBehaviour>>();
+
+    public static void SavePlayerRole(byte playerId, RoleBehaviour role)
+    {
+        if (!playerRolesHistory.ContainsKey(playerId))
+        {
+            playerRolesHistory[playerId] = new List<RoleBehaviour>();
+        }
+        playerRolesHistory[playerId].Add(role);
+    }
+
+    public static List<RoleBehaviour> GetPlayerRolesHistory(byte playerId)
+    {
+        if (playerRolesHistory.ContainsKey(playerId))
+        {
+            return playerRolesHistory[playerId];
+        }
+        return new List<RoleBehaviour>();
+    }
+
+    public static RoleBehaviour GetPlayerLastRole(byte playerId)
+    {
+        if (playerRolesHistory.ContainsKey(playerId)) return playerRolesHistory[playerId].Last();
+        return null;
     }
 }
