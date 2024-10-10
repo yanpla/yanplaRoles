@@ -38,6 +38,7 @@ public class OnGameEndPatch {
             playerRole = playerRole.Remove(playerRole.Length - 3);
             AdditionalTempData.playerRoleHistory.Add(new AdditionalTempData.PlayerRoleInfo { PlayerName = playerControl.Data.PlayerName, Role = playerRole });
         }
+        Utils.ClearPlayerRolesHistory();
     }
 }
 

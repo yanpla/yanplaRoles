@@ -19,4 +19,10 @@ public class Janitor : ImpostorRole, ICustomRole
         CanUseVent = OptionGroupSingleton<JanitorOptions>.Instance.JanitorCanVent.Value,
         OptionsScreenshot = Assets.JanitorBanner,
     };
+
+    public string GetCustomEjectionMessage(NetworkedPlayerInfo player)
+    {
+        if (ExileController.Instance.initData.confirmImpostor) return $"Looks like {player.PlayerName} got cleaned up!";
+        return DestroyableSingleton<TranslationController>.Instance.GetString(StringNames.ExileTextNonConfirm, (Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppReferenceArray<Il2CppSystem.Object>)System.Array.Empty<object>());
+    }
 }

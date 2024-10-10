@@ -48,7 +48,7 @@ public static class Utils{
             Object.Destroy(item.gameObject);
         }
     }
-    
+
     private static Dictionary<byte, List<RoleBehaviour>> playerRolesHistory = new Dictionary<byte, List<RoleBehaviour>>();
 
     public static void SavePlayerRole(byte playerId, RoleBehaviour role)
@@ -74,4 +74,6 @@ public static class Utils{
         if (playerRolesHistory.ContainsKey(playerId)) return playerRolesHistory[playerId].Last();
         return null;
     }
+
+    public static void ClearPlayerRolesHistory() => playerRolesHistory.Clear();
 }
