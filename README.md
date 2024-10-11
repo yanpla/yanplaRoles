@@ -1,31 +1,41 @@
 # yanplaRoles
-`yanplaRoles` is a mod for the game Among Us that introduces new roles and modifiers, currently there are the Jester, Executioner, Snitch, Sheriff and Janitor roles, and the Captain and Guesser Modifiers.
+`yanplaRoles` is a mod for the game Among Us that introduces new roles and modifiers.
 
-### Jester
+| **Impostor Roles**           | **Crewmate Roles**                | **Neutral Roles**                | **Modifiers**                |
+|:----------------------------:|:---------------------------------:|:--------------------------------:|:----------------------------:|
+| [Janitor](#janitor)          | [Sheriff](#sheriff)               | [Arsonist](#arsonist)            | [Captain](#captain)          |
+|                              | [Snitch](#snitch)                 | [Executioner](#executioner)      | [Guesser](#guesser)          |
+|                              |                                   | [Jester](#jester)                |                              |
+
+## Jester
 
 The Jester is a neutral role that wins the game if they are voted out (exiled) by the other players.
 
-### Executioner
+## Executioner
 
 The Executioner is a neutral role that wins the game if their target is voted out (exiled) by the other players. (If the Executioner's target dies before they get exiled, the executioner becomes a crewmate.)
 
-### Sheriff
+## Arsonist
+
+The Arsonist is a Neutral role with two abilities: dousing players with gasoline and igniting them later. To win, the Arsonist must be the last killer standing.
+
+## Sheriff
 
 The Sheriff is a crewmate role that can kill Impostors. However, if the Sheriff kills a Crewmate, the Sheriff dies instead.
 
-### Snitch
+## Snitch
 
 The Snitch is a crewmate role. If the snitch completes all their tasks, the Impostors's names will turn red for them.
 
-### Janitor
+## Janitor
 
 The Janitor is an impostor role that can clean up bodies.
 
-### Captain
+## Captain
 
 The Captain is a modifier that grants the ability to call an emergency meeting from anywhere on the map, without needing to be at the emergency button.
 
-### Guesser
+## Guesser
 
 The Guesser is a modifier for Impostors that grants the ability to guess a player's role and kill them, however if the guesser's guess is wrong the guesser will die instead.
 
