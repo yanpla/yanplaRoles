@@ -76,4 +76,7 @@ public static class Utils{
     }
 
     public static void ClearPlayerRolesHistory() => playerRolesHistory.Clear();
+
+    public static UnityEngine.SpriteRenderer myRend(this PlayerControl p) => p.cosmetics.currentBodySprite.BodySprite;
+
 }

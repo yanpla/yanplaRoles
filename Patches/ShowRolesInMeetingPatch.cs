@@ -22,7 +22,7 @@ public static class ShowRolesInMeetingPatch
             }
             else if (player.Data.IsDead && targetPlayer.Data.IsDead) 
             {
-            var role = Utils.GetPlayerLastRole(player.PlayerId);
+            var role = Utils.GetPlayerLastRole(targetPlayer.PlayerId);
             playerVoteArea.NameText.color = role.NameColor;
             playerVoteArea.NameText.text = targetPlayer.name + "\n" + role.NiceName;
             }

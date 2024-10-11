@@ -30,7 +30,7 @@ public class SheriffButton : CustomActionButton<PlayerControl>
             return;
         }
 
-        if (Target.Data.Role.IsImpostor)
+        if (Target.Data.Role.IsImpostor || Target.Data.Role is Roles.Neutral.Arsonist)
         {
             PlayerControl.LocalPlayer.RpcCustomMurder(Target);
         }

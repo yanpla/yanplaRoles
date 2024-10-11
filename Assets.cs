@@ -14,5 +14,8 @@ public static class Assets
     public static LoadableResourceAsset CycleForward { get; } = new("yanplaRoles.Resources.CycleForward.png");
     public static LoadableResourceAsset Guess { get; } = new("yanplaRoles.Resources.Guess.png");
     public static LoadableResourceAsset Arrow { get; } = new("yanplaRoles.Resources.Arrow.png");
+    public static LoadableResourceAsset Douse { get; } = new("yanplaRoles.Resources.Douse.png");
+    public static LoadableResourceAsset Ignite { get; } = new("yanplaRoles.Resources.Ignite.png");
+    public static LoadableResourceAsset ArsonistBanner { get; } = new("yanplaRoles.Resources.ArsonistBanner.png");
 
 }
