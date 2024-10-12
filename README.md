@@ -44,6 +44,7 @@ The Guesser is a modifier for Impostors that grants the ability to guess a playe
 - **[Reactor](https://github.com/NuclearPowered/Reactor)**: Modding api for Among Us.
 - **[BepInEx](https://github.com/BepInEx/BepInEx)**: A plugin framework for Unity games, used for loading and managing mods.
 - **[TheOtherRoles](https://github.com/TheOtherRolesAU/TheOtherRoles)**: Captain's Emergency Button.
+- **[TownOfUs-R](https://github.com/eDonnes124/Town-Of-Us-R)**: Inspiration and derivation of code and images
 
 ## Contributing
 
