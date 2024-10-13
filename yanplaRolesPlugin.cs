@@ -17,7 +17,7 @@ namespace yanplaRoles;
 public partial class YanplaRolesPlugin : BasePlugin, IMiraPlugin
 {
     public Harmony Harmony { get; } = new(Id);
-    public const string VersionString = "0.1.0";
+    public const string VersionString = "0.1.1";
     public string OptionsTitleText => "yanplaRoles";
     public ConfigFile GetConfigFile() => Config;
     public override void Load()
