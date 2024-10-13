@@ -1,5 +1,4 @@
 using MiraAPI.GameOptions;
-using MiraAPI.Utilities;
 using MiraAPI.GameOptions.Attributes;
 using MiraAPI.GameOptions.OptionTypes;
 using UnityEngine;
