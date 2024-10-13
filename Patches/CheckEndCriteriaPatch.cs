@@ -38,22 +38,13 @@ public static class CheckEndCriteriaPatch
             GameManager.Instance.RpcEndGame(GameOverReason.HumansByTask, false);
             return false;
         }
-
-
         
-        var result = false;
+        var result = true;
         var alives = PlayerControl.AllPlayerControls.ToArray()
             .Where(x => !x.Data.IsDead && !x.Data.Disconnected);
 
-        var roleIsEnd = alives.Any(player => player.Data.Role is Arsonist arsonist && !arsonist.GameEnd(__instance));
-
-        if (!roleIsEnd)
-        {
-            var impsAlive = alives
-            .Where(x => x.Data.Role.IsImpostor);
-
-            if (impsAlive.Count() >= alives.Count() - impsAlive.Count()) result = true;
-        }
+        var roleStopsEnd = alives.Any(player => player.Data.Role is Arsonist arsonist && !arsonist.GameEnd(__instance));
+        if (roleStopsEnd) result = false;
 
         return result;
     }
