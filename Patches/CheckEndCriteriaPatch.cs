@@ -48,5 +48,12 @@ public static class CheckEndCriteriaPatch
 
         return result;
     }
+
+    [HarmonyPostfix]
+    [HarmonyPatch(typeof(LogicGameFlowNormal), nameof(LogicGameFlowNormal.IsGameOverDueToDeath))]
+    public static void Postfix(LogicGameFlowNormal __instance, ref bool __result)
+    {
+        __result = false;
+    }
 }
 

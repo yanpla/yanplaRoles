@@ -9,7 +9,6 @@ using System.Linq;
 using MiraAPI.Roles;
 using yanplaRoles.Roles.Crewmate;
 using yanplaRoles.Roles.Neutral;
-using yanplaRoles.Roles.Impostor;
 
 namespace yanplaRoles.Modifiers.Guesser;
 
