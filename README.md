@@ -53,3 +53,7 @@ Contributions are welcome! Please fork the repository and submit a pull request.
 ## Contact
 
 For any questions or issues, please open an issue on GitHub or contact the project maintainer.
+
+## Disclaimer
+
+This mod is not affiliated with Among Us or Innersloth LLC, and the content contained therein is not endorsed or otherwise sponsored by Innersloth LLC. Portions of the materials contained herein are property of Innersloth LLC. © Innersloth LLC.
