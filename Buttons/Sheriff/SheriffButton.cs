@@ -47,7 +47,8 @@ public class SheriffButton : CustomActionButton<PlayerControl>
 
     public override void SetOutline(bool active)
     {
-        Target?.cosmetics.SetOutline(active, new Il2CppSystem.Nullable<Color>(Palette.ImpostorRed));
+        var sheriffRole = new Roles.Crewmate.Sheriff();
+        Target?.cosmetics.SetOutline(active, new Il2CppSystem.Nullable<Color>(sheriffRole.RoleColor));
     }
 
      public override bool IsTargetValid(PlayerControl? target)

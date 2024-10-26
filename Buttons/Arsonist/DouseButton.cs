@@ -62,7 +62,6 @@ public class DouseButton : CustomActionButton<PlayerControl>
         var arsonist = PlayerControl.LocalPlayer.Data.Role as Roles.Neutral.Arsonist;
 
         arsonist.dousedPlayers.Add(Target.PlayerId);
-        Target.cosmetics.SetOutline(false, new Il2CppSystem.Nullable<Color>(Color.clear));
         arsonist.ResetTimer.Ignite = true;
     }
 

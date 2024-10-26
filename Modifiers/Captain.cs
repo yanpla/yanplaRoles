@@ -17,6 +17,6 @@ public class Captain : GameModifier
 
     public override int GetAssignmentChance()
     {
-        return (int)OptionGroupSingleton<AssassinOptions>.Instance.CaptainChance;
+        return (int)OptionGroupSingleton<CaptainOptions>.Instance.CaptainChance;
     }
 }
