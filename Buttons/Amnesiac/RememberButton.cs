@@ -1,6 +1,4 @@
-using AmongUs.GameOptions;
 using MiraAPI.Hud;
-using MiraAPI.Roles;
 using MiraAPI.Utilities;
 using MiraAPI.Utilities.Assets;
 using UnityEngine;
@@ -11,16 +9,17 @@ namespace yanplaRoles.Buttons.Amnesiac;
 [RegisterButton]
 public class RememberButton : CustomActionButton<DeadBody>
 {
-    public override string Name => "Remember";
+    public override string Name => "";
     public override float Cooldown => 0f;
     public override float EffectDuration => 0f;
-    public override int MaxUses => 1;
-    public override LoadableAsset<Sprite> Sprite => Assets.CleanButton;
+    public override int MaxUses => 0;
+    public override LoadableAsset<Sprite> Sprite => Assets.Remember;
 
     protected override void OnClick()
     {
         if (Target != null)
         {
+            if (PlayerControl.LocalPlayer.Data.Role is Roles.Neutral.Amnesiac amnesiacRole) {amnesiacRole.DestroyArrow();};
             PlayerControl.LocalPlayer.RpcAmnesiacRemember(Target.ParentId);
         }
     }

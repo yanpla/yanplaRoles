@@ -30,6 +30,7 @@
         <EmbeddedResource Include="Resources\Douse.png" />
         <EmbeddedResource Include="Resources\Ignite.png" />
         <EmbeddedResource Include="Resources\ArsonistBanner.png" />
+        <EmbeddedResource Include="Resources\Remember.png" />
 	</ItemGroup>
 
     <Target Name="Copy" AfterTargets="Build" Condition="'$(AmongUs)' != ''">

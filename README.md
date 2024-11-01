@@ -3,8 +3,9 @@
 
 | **Impostor Roles**           | **Crewmate Roles**                | **Neutral Roles**                | **Modifiers**                |
 |:----------------------------:|:---------------------------------:|:--------------------------------:|:----------------------------:|
-| [Janitor](#janitor)          | [Sheriff](#sheriff)               | [Arsonist](#arsonist)            | [Captain](#captain)          |
-|                              | [Snitch](#snitch)                 | [Executioner](#executioner)      | [Guesser](#guesser)          |
+| [Janitor](#janitor)          | [Sheriff](#sheriff)               | [Amnesiac](#amnesiac)            | [Captain](#captain)          |
+|                              | [Snitch](#snitch)                 | [Arsonist](#arsonist)            | [Guesser](#guesser)          |
+|                              |                                   | [Executioner](#executioner)      |                              |
 |                              |                                   | [Jester](#jester)                |                              |
 
 ## Jester
@@ -38,6 +39,13 @@ The Captain is a modifier that grants the ability to call an emergency meeting f
 ## Guesser
 
 The Guesser is a modifier for Impostors that grants the ability to guess a player's role and kill them, however if the guesser's guess is wrong the guesser will die instead.
+
+## Amnesiac
+
+The Amnesiac is a neutral role without a win condition. 
+They are roleless.
+However, they can remember a role by finding a dead player.
+Once they remember their role, they go on to try win with their new win condition.
 
 ## Credits
 - **[MiraApi](https://github.com/All-Of-Us-Mods/MiraAPI)**: Among Us modding API and utility library, Captain Modifier.

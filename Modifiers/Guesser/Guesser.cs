@@ -46,6 +46,7 @@ public class Guesser : GameModifier
         if (CustomRoleSingleton<Jester>.Instance.GetCount() > 0) ColorMapping.Add("Jester", CustomRoleSingleton<Jester>.Instance.RoleColor);
         if (CustomRoleSingleton<Executioner>.Instance.GetCount() > 0) ColorMapping.Add("Executioner", CustomRoleSingleton<Executioner>.Instance.RoleColor);
         if (CustomRoleSingleton<Arsonist>.Instance.GetCount() > 0) ColorMapping.Add("Arsonist", CustomRoleSingleton<Arsonist>.Instance.RoleColor);
+        if (CustomRoleSingleton<Amnesiac>.Instance.GetCount() > 0 || CustomRoleSingleton<Executioner>.Instance.GetCount() > 0) ColorMapping.Add("Amnesiac", CustomRoleSingleton<Amnesiac>.Instance.RoleColor);
         var roleOptions = GameOptionsManager.Instance.currentGameOptions.RoleOptions;
         if (roleOptions.GetChancePerGame(AmongUs.GameOptions.RoleTypes.Engineer) > 0) ColorMapping.Add("Engineer", Palette.CrewmateBlue);
         if (roleOptions.GetChancePerGame(AmongUs.GameOptions.RoleTypes.Tracker) > 0) ColorMapping.Add("Tracker", Palette.CrewmateBlue);
