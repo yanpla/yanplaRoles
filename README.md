@@ -14,7 +14,7 @@ The Jester is a neutral role that wins the game if they are voted out (exiled) b
 
 ## Executioner
 
-The Executioner is a neutral role that wins the game if their target is voted out (exiled) by the other players. (If the Executioner's target dies before they get exiled, the executioner becomes a crewmate.)
+The Executioner is a neutral role that wins the game if their target is voted out (exiled) by the other players. (If the Executioner's target dies before they get exiled, the executioner becomes an Amnesiac.)
 
 ## Arsonist
 
