@@ -1,4 +1,6 @@
 using System;
+using AmongUs.GameOptions;
+using MiraAPI.Roles;
 using Reactor.Networking.Attributes;
 using Reactor.Utilities;
 using UnityEngine;
@@ -21,5 +23,16 @@ public static class CustomRpc
     {
         GuesserKill.MurderPlayer(Utils.PlayerById(target));
         GuesserKill.AssassinKillCount(Utils.PlayerById(target), source);
+    }
+
+    [MethodRpc((uint) CustomRpcCalls.AmnesiacRemember)]
+    public static void RpcAmnesiacRemember(this PlayerControl source, Byte targetId)
+    {
+        var role = Utils.GetPlayerLastRole(targetId);
+        var roleToSet = role != null ? (RoleTypes)RoleId.Get(role.GetType()) : role.Role;
+        Debug.Log($"Remembering {role?.NiceName ?? "No Role"}");
+        RoleManager.Instance.SetRole(source, roleToSet);
+        Utils.SavePlayerRole(source.Data.PlayerId, role);
+        PlayerControl.AllPlayerControls.ForEach((System.Action<PlayerControl>)PlayerNameColor.Set);
     }
 }

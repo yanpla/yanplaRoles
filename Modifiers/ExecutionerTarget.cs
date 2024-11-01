@@ -3,6 +3,7 @@ using MiraAPI.Modifiers.Types;
 using yanplaRoles.CustomGameOverReasons;
 using yanplaRoles.Roles.Neutral;
 using MiraAPI.Roles;
+using AmongUs.GameOptions;
 
 namespace yanplaRoles.Modifiers;
 
@@ -51,7 +52,7 @@ public class ExecutionerTarget : GameModifier
                 return;
             }
             var roleManager = RoleManager.Instance;
-            roleManager.SetRole(executioner, AmongUs.GameOptions.RoleTypes.Crewmate);
+            roleManager.SetRole(executioner, (RoleTypes)RoleId.Get<Amnesiac>());
             Utils.SavePlayerRole(executioner.Data.PlayerId, executioner.Data.Role);
             PlayerControl.AllPlayerControls.ForEach((System.Action<PlayerControl>)PlayerNameColor.Set);
         }
