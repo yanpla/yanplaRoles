@@ -13,7 +13,7 @@ public static class ventPatch
     [HarmonyPrefix, HarmonyPatch(nameof(Vent.EnterVent))]
         public static bool EnterVentPrefix(Vent __instance, PlayerControl pc)
         {
-            if (GameOptionsManager.Instance.CurrentGameOptions.GameMode == GameModes.HideNSeek) return true;
+            if (GameOptionsManager.Instance.CurrentGameOptions.GameMode == GameModes.HideNSeek || PlayerControl.LocalPlayer.Data.IsDead) return true;
 
             if (pc.AmOwner)
             {
@@ -43,7 +43,7 @@ public static class ventPatch
         [HarmonyPrefix, HarmonyPatch(nameof(Vent.ExitVent))]
         public static bool ExitVentPrefix(Vent __instance, PlayerControl pc)
         {
-            if (GameOptionsManager.Instance.CurrentGameOptions.GameMode == GameModes.HideNSeek) return true;
+            if (GameOptionsManager.Instance.CurrentGameOptions.GameMode == GameModes.HideNSeek || PlayerControl.LocalPlayer.Data.IsDead) return true;
 
             if (pc.AmOwner)
             {
