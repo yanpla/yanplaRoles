@@ -18,4 +18,5 @@ public static class Assets
     public static LoadableResourceAsset Ignite { get; } = new("yanplaRoles.Resources.Ignite.png");
     public static LoadableResourceAsset ArsonistBanner { get; } = new("yanplaRoles.Resources.ArsonistBanner.png");
     public static LoadableResourceAsset Remember { get; } = new("yanplaRoles.Resources.Remember.png");
+    public static LoadableResourceAsset Mine { get; } = new("yanplaRoles.Resources.Mine.png");
 }
