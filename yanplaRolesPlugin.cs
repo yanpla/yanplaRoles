@@ -17,12 +17,12 @@ namespace yanplaRoles;
 public partial class YanplaRolesPlugin : BasePlugin, IMiraPlugin
 {
     public Harmony Harmony { get; } = new(Id);
-    public const string VersionString = "0.1.4";
+    public const string VersionString = "0.1.5";
     public string OptionsTitleText => "yanplaRoles";
     public ConfigFile GetConfigFile() => Config;
     public override void Load()
     {
-        ReactorCredits.Register("yanplaRoles", "v" + VersionString, false, ReactorCredits.AlwaysShow);
+        ReactorCredits.Register("yanplaRoles", VersionString, false, ReactorCredits.AlwaysShow);
         Harmony.PatchAll();
     }
 }

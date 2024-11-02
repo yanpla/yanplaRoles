@@ -4,7 +4,7 @@
 | **Impostor Roles**           | **Crewmate Roles**                | **Neutral Roles**                | **Modifiers**                |
 |:----------------------------:|:---------------------------------:|:--------------------------------:|:----------------------------:|
 | [Janitor](#janitor)          | [Sheriff](#sheriff)               | [Amnesiac](#amnesiac)            | [Captain](#captain)          |
-|                              | [Snitch](#snitch)                 | [Arsonist](#arsonist)            | [Guesser](#guesser)          |
+| [Miner](#miner)              | [Snitch](#snitch)                 | [Arsonist](#arsonist)            | [Guesser](#guesser)          |
 |                              |                                   | [Executioner](#executioner)      |                              |
 |                              |                                   | [Jester](#jester)                |                              |
 
@@ -20,6 +20,13 @@ The Executioner is a neutral role that wins the game if their target is voted ou
 
 The Arsonist is a Neutral role with two abilities: dousing players with gasoline and igniting them later. To win, the Arsonist must be the last killer standing.
 
+## Amnesiac
+
+The Amnesiac is a neutral role without a win condition. 
+They are roleless.
+However, they can remember a role by finding a dead player.
+Once they remember their role, they go on to try win with their new win condition.
+
 ## Sheriff
 
 The Sheriff is a crewmate role that can kill Impostors. However, if the Sheriff kills a Crewmate, the Sheriff dies instead.
@@ -32,6 +39,10 @@ The Snitch is a crewmate role. If the snitch completes all their tasks, the Impo
 
 The Janitor is an impostor role that can clean up bodies.
 
+## Miner
+
+The Miner is an impostor role that can create new vents around the map.
+
 ## Captain
 
 The Captain is a modifier that grants the ability to call an emergency meeting from anywhere on the map, without needing to be at the emergency button.
@@ -40,12 +51,7 @@ The Captain is a modifier that grants the ability to call an emergency meeting f
 
 The Guesser is a modifier for Impostors that grants the ability to guess a player's role and kill them, however if the guesser's guess is wrong the guesser will die instead.
 
-## Amnesiac
 
-The Amnesiac is a neutral role without a win condition. 
-They are roleless.
-However, they can remember a role by finding a dead player.
-Once they remember their role, they go on to try win with their new win condition.
 
 ## Credits
 - **[MiraApi](https://github.com/All-Of-Us-Mods/MiraAPI)**: Among Us modding API and utility library, Captain Modifier.
