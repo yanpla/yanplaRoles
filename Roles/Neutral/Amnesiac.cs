@@ -41,7 +41,7 @@ public class Amnesiac : CrewmateRole, ICustomRole
     {
         var nearestBody = MiraAPI.Utilities.Extensions.GetNearestDeadBody(PlayerControl.LocalPlayer, 500f);
         if (nearestBody != null){
-            if (bodyCoroutine == null) bodyCoroutine = PlayerControl.LocalPlayer.StartCoroutine(WaitAndLogBody(nearestBody));
+            if (bodyCoroutine == null) bodyCoroutine = PlayerControl.LocalPlayer.StartCoroutine(AwaitAndAttachArrow(nearestBody));
         }
         else{
             DestroyArrow();
@@ -61,7 +61,12 @@ public class Amnesiac : CrewmateRole, ICustomRole
         }
     }
 
-    private IEnumerator WaitAndLogBody(DeadBody body)
+    public override void OnDeath(DeathReason reason)
+    {
+        DestroyArrow();
+    }
+
+    private IEnumerator AwaitAndAttachArrow(DeadBody body)
     {
         yield return new WaitForSeconds(OptionGroupSingleton<AmnesiacOptions>.Instance.ArrowAppearDelay);
         LoadableAsset<Sprite> ArrowSprite = Assets.Arrow;

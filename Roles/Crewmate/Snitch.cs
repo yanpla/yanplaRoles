@@ -55,6 +55,14 @@ public class Snitch : CrewmateRole, ICustomRole
             Object.Destroy(arrow.Value.gameObject);
         SnitchArrows.Remove(arrow.Key);
     }
+
+    public override void OnDeath(DeathReason reason)
+    {
+        SnitchArrows.Values.DestroyAll();
+        SnitchArrows.Clear();
+        ImpArrows.DestroyAll();
+        ImpArrows.Clear();
+    }
 }
 
 [HarmonyPatch(typeof(PlayerControl), nameof(PlayerControl.CompleteTask))]
@@ -145,14 +153,17 @@ public class UpdateArrows
             }
         }
 
+        if (snitchPlayer.Data.IsDead)
+        {
+            snitch.SnitchArrows.Values.DestroyAll();
+            snitch.SnitchArrows.Clear();
+            snitch.ImpArrows.DestroyAll();
+            snitch.ImpArrows.Clear();
+        }
+
         if (snitchPlayer != null)
         {
             foreach (var arrow in snitch.ImpArrows) arrow.target = snitchPlayer.transform.position;
-            if (snitchPlayer.Data.IsDead)
-            {
-                snitch.ImpArrows.DestroyAll();
-                snitch.ImpArrows.Clear();
-            }
         }
 
         foreach (var arrow in snitch.SnitchArrows)
