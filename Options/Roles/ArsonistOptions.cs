@@ -15,10 +15,10 @@ public class ArsonistOptions : AbstractOptionGroup
     public override Type AdvancedRole => typeof(Arsonist);
 
     [ModdedNumberOption("Douse Cooldown", 5, 60, 2.5f, MiraNumberSuffixes.Seconds)]
-    public float DouseCooldown { get; set; } = 25f;
+    public float DouseCooldown { get; set; } = 30f;
 
     [ModdedNumberOption("Maximum Players Doused", 1, 15, 1f)]
-    public float MaxDousedPlayers { get; set; } = 5f;
+    public float MaxDousedPlayers { get; set; } = 3f;
 
     public ModdedToggleOption ArsonistHasImpVision { get; } = new("Has Impostor vision", false);
 }

@@ -22,9 +22,7 @@ public class SheriffButton : CustomActionButton<PlayerControl>
         return role is Roles.Crewmate.Sheriff; // only show button when the player has Sheriff role.
     }
     protected override void OnClick()
-    {
-        Debug.Log("Sheriff button clicked.");
-        
+    {        
         if (Target == null)
         {
             return;

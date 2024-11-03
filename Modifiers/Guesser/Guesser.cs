@@ -45,9 +45,7 @@ public class Guesser : GameModifier
         foreach (var role in RoleManager.Instance.AllRoles){
             if (role.IsImpostor) continue; // Skip impostors (for now)
             if (role.IsDead) continue; // Skip dead roles
-            Debug.Log(role.NiceName);
             if (CustomRoleManager.GetCustomRoleBehaviour(role.Role, out var customRole) && customRole != null){
-                Debug.Log("custom: " + customRole.RoleName);
                 if (customRole.GetCount() > 0){
                     ColorMapping.Add(customRole.RoleName, customRole.RoleColor);
                 }

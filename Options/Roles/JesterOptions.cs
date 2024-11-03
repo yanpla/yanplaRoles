@@ -13,5 +13,5 @@ public class JesterOptions : AbstractOptionGroup
     public override Type AdvancedRole => typeof(Jester);
 
     public ModdedToggleOption JesterCanVent { get; } = new("Jester Can Vent", false);
-    public ModdedToggleOption JesterHasImpVision { get; } = new("Has Impostor vision", false);
+    public ModdedToggleOption JesterHasImpVision { get; } = new("Has Impostor vision", true);
 }

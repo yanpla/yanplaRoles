@@ -38,11 +38,9 @@ public class AddButton
             var targetId = voteArea.TargetPlayerId;
             if (IsExempt(voteArea))
             {
-                Debug.Log("Hiding button for " + targetId);
                 modifier.Buttons[targetId] = (null, null, null, null);
                 return;
             }
-            Debug.Log("Generating button for " + targetId);
 
             var confirmButton = voteArea.Buttons.transform.GetChild(0).gameObject;
             var parent = confirmButton.transform.parent.parent;
