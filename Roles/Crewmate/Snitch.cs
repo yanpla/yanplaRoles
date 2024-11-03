@@ -135,46 +135,30 @@ public class UpdateArrows
         if (PlayerControl.LocalPlayer == null) return;
         if (PlayerControl.LocalPlayer.Data == null) return;
 
-        Snitch snitch = (Snitch)CustomRoleSingleton<Snitch>.Instance;
-        if (PlayerControl.LocalPlayer.Data.IsDead)
+        foreach (var role in PlayerControl.AllPlayerControls)
         {
-            snitch.SnitchArrows.Values.DestroyAll();
-            snitch.SnitchArrows.Clear();
-            snitch.ImpArrows.DestroyAll();
-            snitch.ImpArrows.Clear();
-        }
+            if (role.Data.Role is Snitch snitch){
+                if (PlayerControl.LocalPlayer.Data.IsDead || role.Data.IsDead)
+                {
+                    snitch.SnitchArrows.Values.DestroyAll();
+                    snitch.SnitchArrows.Clear();
+                    snitch.ImpArrows.DestroyAll();
+                    snitch.ImpArrows.Clear();
+                }
 
-        PlayerControl snitchPlayer = null;
+                foreach (var arrow in snitch.ImpArrows) arrow.target = role.transform.position;
 
-        foreach (var player in PlayerControl.AllPlayerControls)
-        {
-            if (player.Data.Role is Snitch){
-                snitchPlayer = player;
+                foreach (var arrow in snitch.SnitchArrows)
+                {
+                    var player = Utils.PlayerById(arrow.Key);
+                    if (player == null || player.Data == null || player.Data.IsDead || player.Data.Disconnected)
+                    {
+                        snitch.DestroyArrow(arrow.Key);
+                        continue;
+                    }
+                    arrow.Value.target = player.transform.position;
+                }
             }
-        }
-
-        if (snitchPlayer.Data.IsDead)
-        {
-            snitch.SnitchArrows.Values.DestroyAll();
-            snitch.SnitchArrows.Clear();
-            snitch.ImpArrows.DestroyAll();
-            snitch.ImpArrows.Clear();
-        }
-
-        if (snitchPlayer != null)
-        {
-            foreach (var arrow in snitch.ImpArrows) arrow.target = snitchPlayer.transform.position;
-        }
-
-        foreach (var arrow in snitch.SnitchArrows)
-        {
-            var player = Utils.PlayerById(arrow.Key);
-            if (player == null || player.Data == null || player.Data.IsDead || player.Data.Disconnected)
-            {
-                snitch.DestroyArrow(arrow.Key);
-                continue;
-            }
-            arrow.Value.target = player.transform.position;
         }
     }
 }

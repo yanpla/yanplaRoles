@@ -14,7 +14,7 @@ public class GuesserOptions : AbstractOptionGroup
     public float NumberOfGuessers { get; set; } = 1f;
 
     [ModdedNumberOption("Possible Guesses", min: 1, max: 15, 1f)]
-    public float PossibleGuesses { get; set; } = 1f;
+    public float PossibleGuesses { get; set; } = 15f;
 
     [ModdedToggleOption("Guess Crewmate")]
     public bool GuessCrewmate { get; set; } = false;
@@ -23,5 +23,5 @@ public class GuesserOptions : AbstractOptionGroup
     public bool GuessMultiple { get; set; } = false;
 
     [ModdedToggleOption("Guess After Voting")]
-    public bool GuessAfterVoting { get; set; } = false;
+    public bool GuessAfterVoting { get; set; } = true;
 }

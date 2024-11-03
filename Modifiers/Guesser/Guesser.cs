@@ -9,6 +9,7 @@ using System.Linq;
 using MiraAPI.Roles;
 using yanplaRoles.Roles.Crewmate;
 using yanplaRoles.Roles.Neutral;
+using MiraAPI.Utilities;
 
 namespace yanplaRoles.Modifiers.Guesser;
 
@@ -38,15 +39,24 @@ public class Guesser : GameModifier
         return 100;
     }
 
-    public Guesser()
+    public override void OnActivate()
     {
-        // CHANGE THIS IF TOO MANY ROLES
-        if (CustomRoleSingleton<Snitch>.Instance.GetCount() > 0) ColorMapping.Add("Snitch", CustomRoleSingleton<Snitch>.Instance.RoleColor);
-        if (CustomRoleSingleton<Sheriff>.Instance.GetCount() > 0) ColorMapping.Add("Sheriff", CustomRoleSingleton<Sheriff>.Instance.RoleColor);
-        if (CustomRoleSingleton<Jester>.Instance.GetCount() > 0) ColorMapping.Add("Jester", CustomRoleSingleton<Jester>.Instance.RoleColor);
-        if (CustomRoleSingleton<Executioner>.Instance.GetCount() > 0) ColorMapping.Add("Executioner", CustomRoleSingleton<Executioner>.Instance.RoleColor);
-        if (CustomRoleSingleton<Arsonist>.Instance.GetCount() > 0) ColorMapping.Add("Arsonist", CustomRoleSingleton<Arsonist>.Instance.RoleColor);
-        if (CustomRoleSingleton<Amnesiac>.Instance.GetCount() > 0 || CustomRoleSingleton<Executioner>.Instance.GetCount() > 0) ColorMapping.Add("Amnesiac", CustomRoleSingleton<Amnesiac>.Instance.RoleColor);
+        if (!PlayerControl.LocalPlayer.HasModifier<Guesser>()) return;
+        foreach (var role in RoleManager.Instance.AllRoles){
+            if (role.IsImpostor) continue; // Skip impostors (for now)
+            if (role.IsDead) continue; // Skip dead roles
+            Debug.Log(role.NiceName);
+            if (CustomRoleManager.GetCustomRoleBehaviour(role.Role, out var customRole) && customRole != null){
+                Debug.Log("custom: " + customRole.RoleName);
+                if (customRole.GetCount() > 0){
+                    ColorMapping.Add(customRole.RoleName, customRole.RoleColor);
+                }
+            }
+        }
+        if (ColorMapping.ContainsKey("Executioner") && !ColorMapping.ContainsKey("Amnesiac"))
+        {
+            ColorMapping.Add("Amnesiac", CustomRoleSingleton<Amnesiac>.Instance.RoleColor);
+        }
         var roleOptions = GameOptionsManager.Instance.currentGameOptions.RoleOptions;
         if (roleOptions.GetChancePerGame(AmongUs.GameOptions.RoleTypes.Engineer) > 0) ColorMapping.Add("Engineer", Palette.CrewmateBlue);
         if (roleOptions.GetChancePerGame(AmongUs.GameOptions.RoleTypes.Tracker) > 0) ColorMapping.Add("Tracker", Palette.CrewmateBlue);
