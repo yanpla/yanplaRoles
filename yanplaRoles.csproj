@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
         <TargetFramework>net6.0</TargetFramework>
-		<Version>0.1.5</Version>
+		<Version>0.1.6</Version>
 		<Description>yanplaRoles</Description>
 		<Authors>yanpla</Authors>
 	</PropertyGroup>
