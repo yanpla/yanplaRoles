@@ -5,7 +5,6 @@ using MiraAPI.Roles;
 using MiraAPI.Utilities.Assets;
 using Reactor.Utilities;
 using UnityEngine;
-using yanplaRoles.rpc;
 
 namespace yanplaRoles.Roles.Crewmate;
 
@@ -24,6 +23,7 @@ public class Snitch : CrewmateRole, ICustomRole
     };
     
     public bool impostorsRevealed = false;
+    public bool revealed = false;
     public List<ArrowBehaviour> ImpArrows = new List<ArrowBehaviour>();
     public Dictionary<byte, ArrowBehaviour> SnitchArrows = new Dictionary<byte, ArrowBehaviour>();
 
@@ -72,42 +72,21 @@ public class CompleteTask
 
     public static void Postfix(PlayerControl __instance)
     {
-        if (!(__instance.Data.Role is Snitch)) return;
-        if (__instance.Data.IsDead) return;
-        var taskinfos = __instance.Data.Tasks.ToArray();
+        if (__instance.Data.Role is Snitch snitch){
+            if (__instance.Data.IsDead) return;
+            var taskinfos = __instance.Data.Tasks.ToArray();
 
-        var tasksLeft = taskinfos.Count(x => !x.Complete);
-        var role = CustomRoleSingleton<Snitch>.Instance;
-        var localRole = PlayerControl.LocalPlayer.Data.Role;
+            var tasksLeft = taskinfos.Count(x => !x.Complete);
+            var localRole = PlayerControl.LocalPlayer.Data.Role;
 
-        if (tasksLeft == 1)
-        {   
-            if (localRole is Snitch){
-                Coroutines.Start(Utils.FlashCoroutine(role.RoleColor));
-            }
-            else if (localRole.TeamType == RoleTeamTypes.Impostor)
-            {
-                Coroutines.Start(Utils.FlashCoroutine(role.RoleColor));
-                var gameObj = new GameObject();
-                var arrow = gameObj.AddComponent<ArrowBehaviour>();
-                gameObj.transform.parent = PlayerControl.LocalPlayer.gameObject.transform;
-                var renderer = gameObj.AddComponent<SpriteRenderer>();
-                renderer.sprite = ArrowSprite.LoadAsset();
-                arrow.image = renderer;
-                gameObj.layer = 5;
-                ((Snitch)role).ImpArrows.Add(arrow);
-            }
-        }
-
-        else if (tasksLeft == 0)
-        {
-            if (localRole is Snitch)
-            {
-                Coroutines.Start(Utils.FlashCoroutine(Color.green));
-                ((Snitch)localRole).impostorsRevealed = true;
-                var impostors = PlayerControl.AllPlayerControls.ToArray().Where(x => x.Data.Role.IsImpostor);
-                foreach (var imp in impostors)
+            if (tasksLeft == 1)
+            {   
+                if (localRole is Snitch){
+                    Coroutines.Start(Utils.FlashCoroutine(snitch.RoleColor));
+                }
+                else if (localRole.IsImpostor)
                 {
+                    Coroutines.Start(Utils.FlashCoroutine(snitch.RoleColor));
                     var gameObj = new GameObject();
                     var arrow = gameObj.AddComponent<ArrowBehaviour>();
                     gameObj.transform.parent = PlayerControl.LocalPlayer.gameObject.transform;
@@ -115,12 +94,34 @@ public class CompleteTask
                     renderer.sprite = ArrowSprite.LoadAsset();
                     arrow.image = renderer;
                     gameObj.layer = 5;
-                    ((Snitch)role).SnitchArrows.Add(imp.PlayerId, arrow);
+                    snitch.ImpArrows.Add(arrow);
                 }
+                snitch.revealed = true;
             }
-            else if (localRole.IsImpostor)
+
+            else if (tasksLeft == 0)
             {
-                Coroutines.Start(Utils.FlashCoroutine(Color.green));
+                if (localRole is Snitch)
+                {
+                    Coroutines.Start(Utils.FlashCoroutine(Color.green));
+                    snitch.impostorsRevealed = true;
+                    var impostors = PlayerControl.AllPlayerControls.ToArray().Where(x => x.Data.Role.IsImpostor);
+                    foreach (var imp in impostors)
+                    {
+                        var gameObj = new GameObject();
+                        var arrow = gameObj.AddComponent<ArrowBehaviour>();
+                        gameObj.transform.parent = PlayerControl.LocalPlayer.gameObject.transform;
+                        var renderer = gameObj.AddComponent<SpriteRenderer>();
+                        renderer.sprite = ArrowSprite.LoadAsset();
+                        arrow.image = renderer;
+                        gameObj.layer = 5;
+                        snitch.SnitchArrows.Add(imp.PlayerId, arrow);
+                    }
+                }
+                else if (localRole.IsImpostor)
+                {
+                    Coroutines.Start(Utils.FlashCoroutine(Color.green));
+                }
             }
         }
     }

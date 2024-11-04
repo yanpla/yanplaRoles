@@ -6,8 +6,7 @@ using System.Reflection;
 using Reactor.Utilities.Extensions;
 using System;
 using TMPro;
-using Il2CppSystem.Xml.Schema;
-using MiraAPI.Networking;
+using yanplaRoles.Roles.Crewmate;
 
 namespace yanplaRoles.Modifiers.Guesser;
 
@@ -29,6 +28,11 @@ public class AddButton
                 player.Data.Role.IsImpostor ||
                 player.Data.IsDead ||
                 player.Data.Disconnected
+            ) return true;
+            else if (
+                PlayerControl.LocalPlayer.Data.Role.IsImpostor &&
+                player.Data.Role is Snitch snitch && 
+                snitch.revealed
             ) return true;
             return player.Data.Role == null;
         }
