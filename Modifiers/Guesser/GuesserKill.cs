@@ -2,6 +2,7 @@ using System.Linq;
 using UnityEngine;
 using Il2CppInterop.Runtime.InteropTypes.Arrays;
 using yanplaRoles.rpc;
+using MiraAPI.Networking;
 
 namespace yanplaRoles.Modifiers.Guesser;
 
@@ -45,39 +46,8 @@ public class GuesserKill
             SoundManager.Instance.PlaySound(player.KillSfx, false, 0.8f);
             hudManager.KillOverlay.ShowKillAnimation(player.Data, player.Data);
         }
-        var amOwner = player.AmOwner;
-        if (amOwner)
-        {
-            hudManager.ShadowQuad.gameObject.SetActive(false);
-            player.cosmetics.nameText.GetComponent<MeshRenderer>().material.SetInt("_Mask", 0);
-            player.RpcSetScanner(false);
-            ImportantTextTask importantTextTask = new GameObject("_Player").AddComponent<ImportantTextTask>();
-            importantTextTask.transform.SetParent(AmongUsClient.Instance.transform, false);
-            if (!GameOptionsManager.Instance.currentNormalGameOptions.GhostsDoTasks)
-            {
-                for (int i = 0;i < player.myTasks.Count;i++)
-                {
-                    PlayerTask playerTask = player.myTasks.ToArray()[i];
-                    playerTask.OnRemove();
-                    Object.Destroy(playerTask.gameObject);
-                }
-
-                player.myTasks.Clear();
-                importantTextTask.Text = DestroyableSingleton<TranslationController>.Instance.GetString(
-                    StringNames.GhostIgnoreTasks,
-                    new Il2CppReferenceArray<Il2CppSystem.Object>(0)
-                );
-            }
-            else
-            {
-                importantTextTask.Text = DestroyableSingleton<TranslationController>.Instance.GetString(
-                    StringNames.GhostDoTasks,
-                    new Il2CppReferenceArray<Il2CppSystem.Object>(0));
-            }
-
-            player.myTasks.Insert(0, importantTextTask);
-        }
-        player.Die(DeathReason.Kill, true);
+        
+        player.CustomMurder(player, MurderResultFlags.Succeeded, false, false, false, false, false);
 
         if (voteArea == null) return;
         if (voteArea.DidVote) voteArea.UnsetVote();
@@ -88,7 +58,7 @@ public class GuesserKill
         voteArea.XMark.transform.localScale = Vector3.one;
 
         var meetingHud = MeetingHud.Instance;
-        if (amOwner)
+        if (player.AmOwner)
         {
             meetingHud.SetForegroundForDead();
         }

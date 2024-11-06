@@ -28,11 +28,6 @@ public class Jester : CrewmateRole, ICustomRole
         GhostRole = (RoleTypes)RoleId.Get<NeutralGhostRole>(),
     };
 
-    public override void SpawnTaskHeader(PlayerControl playerControl)
-    {
-        // remove existing task header.
-    }
-
     public override bool CanUse(IUsable usable)
 	{
 		if (!GameManager.Instance.LogicUsables.CanUse(usable, Player))

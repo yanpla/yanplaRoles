@@ -35,11 +35,6 @@ public class Arsonist : CrewmateRole, ICustomRole
 
     public (bool Douse, bool Ignite) ResetTimer = (false, false ); // [0] = Douse, [1] = Ignite
 
-    public override void SpawnTaskHeader(PlayerControl playerControl)
-    {
-        // remove existing task header.
-    }
-
     public override bool CanUse(IUsable usable)
 	{
 		if (!GameManager.Instance.LogicUsables.CanUse(usable, Player))

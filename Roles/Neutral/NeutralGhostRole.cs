@@ -6,7 +6,7 @@ namespace yanplaRoles.Roles.Neutral;
 
 [RegisterCustomRole]
 
-public class NeutralGhostRole : ImpostorGhostRole, ICustomRole 
+public class NeutralGhostRole : CrewmateGhostRole, ICustomRole 
 {
     public string RoleName => "Neutral Ghost";
     public string RoleDescription => "You're dead, enjoy the afterlife";
@@ -17,13 +17,13 @@ public class NeutralGhostRole : ImpostorGhostRole, ICustomRole
     public CustomRoleConfiguration Configuration => new CustomRoleConfiguration(this)
     {
         IsGhostRole = true,
-        CanUseSabotage = false,
         HideSettings = true,
+        TasksCountForProgress = false,
     };
 
     public override void SpawnTaskHeader(PlayerControl playerControl)
     {
-        // remove existing task header.
+
     }
 
     public override bool DidWin(GameOverReason gameOverReason)
@@ -31,4 +31,13 @@ public class NeutralGhostRole : ImpostorGhostRole, ICustomRole
         return false;
     }
 
+    public override bool CanUse(IUsable usable)
+	{
+		if (!GameManager.Instance.LogicUsables.CanUse(usable, Player))
+		{
+			return false;
+		}
+		Console console = usable.Cast<Console>();
+		return !(console != null) || console.AllowImpostor;
+	}
 }

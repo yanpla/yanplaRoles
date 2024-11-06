@@ -14,15 +14,13 @@ public static class ShowRolesInMeetingPatch
         foreach (PlayerVoteArea playerVoteArea in __instance.playerStates)
         {
             var targetPlayer = Utils.PlayerById(playerVoteArea.TargetPlayerId);
-            var role = targetPlayer.Data.IsDead ? Utils.GetPlayerLastRole(targetPlayer.PlayerId) : targetPlayer.Data.Role;
+            var role = Utils.GetPlayerLastRole(targetPlayer.PlayerId);
             playerVoteArea.ColorBlindName.transform.localPosition = new Vector3(-0.93f, -0.2f, -0.1f);
 
             if (
-                playerVoteArea.TargetPlayerId == player.PlayerId && 
-                !player.Data.IsDead || 
+                playerVoteArea.TargetPlayerId == player.PlayerId && !player.Data.IsDead || 
                 player.Data.IsDead || 
-                player.Data.Role.IsImpostor &&
-                targetPlayer.Data.Role is Snitch snitch && snitch.revealed
+                player.Data.Role.IsImpostor && targetPlayer.Data.Role is Snitch snitch && snitch.revealed
             ){
             playerVoteArea.NameText.color = role.NameColor;
             playerVoteArea.NameText.text = targetPlayer.Data.PlayerName + "\n" + role.NiceName;
