@@ -77,7 +77,7 @@ public class GuesserKill
 
             player.myTasks.Insert(0, importantTextTask);
         }
-        player.Die(DeathReason.Kill, false);
+        player.Die(DeathReason.Kill, true);
 
         if (voteArea == null) return;
         if (voteArea.DidVote) voteArea.UnsetVote();
