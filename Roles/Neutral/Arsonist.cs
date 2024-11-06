@@ -81,6 +81,7 @@ public class Arsonist : CrewmateRole, ICustomRole
         foreach (var playerId in dousedPlayers)
         {
             var player = Utils.PlayerById(playerId);
+            if (player == null || player.Data == null || player.Data.IsDead || player.Data.Disconnected) continue;
             PlayerControl.LocalPlayer.RpcCustomMurder(player, teleportMurderer: false);
 
         }
