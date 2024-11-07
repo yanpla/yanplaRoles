@@ -31,8 +31,16 @@ public static class CustomRpc
     {
         var role = Utils.GetPlayerLastRole(targetId);
         var roleToSet = role != null ? (RoleTypes)RoleId.Get(role.GetType()) : role.Role;
-        RoleManager.Instance.SetRole(source, roleToSet);
-        Utils.SavePlayerRole(source.Data.PlayerId, role);
+        source.ChangeRole(roleToSet);
+    }
+
+    [MethodRpc((uint) CustomRpcCalls.ChangeRole)]
+    public static void RpcChangeRole(this PlayerControl source, int role) => source.ChangeRole((RoleTypes) role);
+
+    private static void ChangeRole(this PlayerControl source, RoleTypes role)
+    {
+        RoleManager.Instance.SetRole(source, role);
+        Utils.SavePlayerRole(source.Data.PlayerId, source.Data.Role);
         PlayerControl.AllPlayerControls.ForEach((System.Action<PlayerControl>)PlayerNameColor.Set);
     }
 

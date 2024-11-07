@@ -4,6 +4,8 @@ using yanplaRoles.CustomGameOverReasons;
 using yanplaRoles.Roles.Neutral;
 using MiraAPI.Roles;
 using AmongUs.GameOptions;
+using MiraAPI.Utilities;
+using yanplaRoles.rpc;
 
 namespace yanplaRoles.Modifiers;
 
@@ -24,10 +26,6 @@ public class ExecutionerTarget : GameModifier
 
     public override int GetAssignmentChance()
     {
-        if (CustomRoleSingleton<Executioner>.Instance.GetCount() == 1)
-        {
-            return 100;
-        }
         return 0;
     }
 
@@ -51,10 +49,7 @@ public class ExecutionerTarget : GameModifier
                 GameManager.Instance.RpcEndGame((GameOverReason)CustomGameOverReasonsEnum.ExecutionerWin, false);
                 return;
             }
-            var roleManager = RoleManager.Instance;
-            roleManager.SetRole(executioner, (RoleTypes)RoleId.Get<Amnesiac>());
-            Utils.SavePlayerRole(executioner.Data.PlayerId, executioner.Data.Role);
-            PlayerControl.AllPlayerControls.ForEach((System.Action<PlayerControl>)PlayerNameColor.Set);
+            executioner.RpcChangeRole(RoleId.Get<Amnesiac>());
         }
     }
 

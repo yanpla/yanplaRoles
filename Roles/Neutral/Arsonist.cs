@@ -84,19 +84,19 @@ public class Arsonist : CrewmateRole, ICustomRole
     }
 
     public bool GameEnd(LogicGameFlowNormal __instance)
+    {
+        if (Player.Data.IsDead || Player.Data.Disconnected) return true;
+
+        if (PlayerControl.AllPlayerControls.ToArray().Count(x => !x.Data.IsDead && !x.Data.Disconnected) <= 2 &&
+                PlayerControl.AllPlayerControls.ToArray().Count(x => !x.Data.IsDead && !x.Data.Disconnected &&
+                (x.Data.Role.IsImpostor || x.Data.Role is Arsonist)) == 1)
         {
-            if (Player.Data.IsDead || Player.Data.Disconnected) return true;
-
-            if (PlayerControl.AllPlayerControls.ToArray().Count(x => !x.Data.IsDead && !x.Data.Disconnected) <= 2 &&
-                    PlayerControl.AllPlayerControls.ToArray().Count(x => !x.Data.IsDead && !x.Data.Disconnected &&
-                    (x.Data.Role.IsImpostor || x.Data.Role is Arsonist)) == 1)
-            {
-                GameManager.Instance.RpcEndGame((GameOverReason)CustomGameOverReasonsEnum.ArsonistWins, false);
-                return false;
-            }
-
+            GameManager.Instance.RpcEndGame((GameOverReason)CustomGameOverReasonsEnum.ArsonistWins, false);
             return false;
         }
+
+        return false;
+    }
 
 
     public override bool DidWin(GameOverReason gameOverReason)

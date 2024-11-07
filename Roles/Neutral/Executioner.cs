@@ -5,6 +5,9 @@ using MiraAPI.Modifiers;
 using yanplaRoles.Modifiers;
 using MiraAPI.Utilities;
 using AmongUs.GameOptions;
+using Reactor.Utilities.Extensions;
+using System.Linq;
+using yanplaRoles.rpc;
 
 namespace yanplaRoles.Roles.Neutral;
 
@@ -39,13 +42,19 @@ public class Executioner : CrewmateRole, ICustomRole
 
     public void HudUpdate(HudManager hudManager)
     {
-        if (target == null){
-            foreach (var player in PlayerControl.AllPlayerControls)
+        if (target == null)
+        {
+            var aliveCrewmates = PlayerControl.AllPlayerControls.ToArray().Where(p => !p.Data.IsDead && p.Data.Role.TeamType == RoleTeamTypes.Crewmate).ToArray();
+            aliveCrewmates = aliveCrewmates.Where(p => !(p.Data.Role is ICustomRole role) || role.IsModifierApplicable(new ExecutionerTarget())).ToArray();
+            if (aliveCrewmates.Length > 0)
             {
-                if (!player.HasModifier<ExecutionerTarget>()) continue;
-                target = player;
+                target = aliveCrewmates.Random<PlayerControl>();
+                target.RpcAddModifier<ExecutionerTarget>();
                 target.cosmetics.nameText.color = Color.black;
-                break;
+            }
+            else
+            {
+                PlayerControl.LocalPlayer.RpcChangeRole(0); // Crewmate
             }
         }
         else if (MeetingHud.Instance != null)
