@@ -45,17 +45,23 @@ public class Executioner : CrewmateRole, ICustomRole
         if (target == null)
         {
             var aliveCrewmates = PlayerControl.AllPlayerControls.ToArray().Where(p => !p.Data.IsDead && p.Data.Role.TeamType == RoleTeamTypes.Crewmate).ToArray();
-            aliveCrewmates = aliveCrewmates.Where(p => !(p.Data.Role is ICustomRole role) || role.IsModifierApplicable(new ExecutionerTarget())).ToArray();
-            if (aliveCrewmates.Length > 0)
-            {
-                target = aliveCrewmates.Random<PlayerControl>();
-                target.RpcAddModifier<ExecutionerTarget>();
-                target.cosmetics.nameText.color = Color.black;
-            }
+            target = aliveCrewmates.Where(p => p.HasModifier<ExecutionerTarget>()).FirstOrDefault();
+            if (target != null) target.cosmetics.nameText.color = Color.black;
             else
             {
-                PlayerControl.LocalPlayer.RpcChangeRole(0); // Crewmate
+                aliveCrewmates = aliveCrewmates.Where(p => !(p.Data.Role is ICustomRole role) || role.IsModifierApplicable(new ExecutionerTarget())).ToArray();
+                if (aliveCrewmates.Length > 0)
+                {
+                    target = aliveCrewmates.Random<PlayerControl>();
+                    target.RpcAddModifier<ExecutionerTarget>();
+                    target.cosmetics.nameText.color = Color.black;
+                }
+                else
+                {
+                    PlayerControl.LocalPlayer.RpcChangeRole(0); // Crewmate
+                }
             }
+            
         }
         else if (MeetingHud.Instance != null)
         {
