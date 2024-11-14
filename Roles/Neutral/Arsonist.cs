@@ -19,7 +19,6 @@ public class Arsonist : CrewmateRole, ICustomRole
     public string RoleLongDescription => RoleDescription;
     public Color RoleColor => new Color(1f, 0.3f, 0f);
     public ModdedRoleTeams Team => ModdedRoleTeams.Neutral;
-    public int MaxPlayers => 1;
 
     public CustomRoleConfiguration Configuration => new CustomRoleConfiguration(this)
     {
@@ -27,7 +26,8 @@ public class Arsonist : CrewmateRole, ICustomRole
         TasksCountForProgress = false,
         CanGetKilled = true,
         GhostRole = (RoleTypes)RoleId.Get<NeutralGhostRole>(),
-        OptionsScreenshot = Assets.ArsonistBanner
+        OptionsScreenshot = Assets.ArsonistBanner,
+        MaxRoleCount = 1
     };
 
     public HashSet<byte> dousedPlayers = new HashSet<byte>();
@@ -39,7 +39,7 @@ public class Arsonist : CrewmateRole, ICustomRole
     {
         this.SetCanDoTasks(false);
     }
-    
+
     public void HudUpdate(HudManager hudManager)
     {
         foreach (var playerId in dousedPlayers)

@@ -19,13 +19,13 @@ public class Executioner : CrewmateRole, ICustomRole
     public string RoleLongDescription => RoleDescription;
     public Color RoleColor => new Color(0.55f, 0.25f, 0.02f, 1f);
     public ModdedRoleTeams Team => ModdedRoleTeams.Neutral;
-    public int MaxPlayers => 1;
 
     public CustomRoleConfiguration Configuration => new CustomRoleConfiguration(this)
     {
         TasksCountForProgress = false,
         CanGetKilled = true,
         GhostRole = (RoleTypes)RoleId.Get<NeutralGhostRole>(),
+        MaxRoleCount = 1
     };
 
     public Executioner()
