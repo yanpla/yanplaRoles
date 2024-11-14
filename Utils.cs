@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using MiraAPI.Roles;
 using UnityEngine;
 
 namespace yanplaRoles;
@@ -79,4 +80,19 @@ public static class Utils{
 
     public static UnityEngine.SpriteRenderer myRend(this PlayerControl p) => p.cosmetics.currentBodySprite.BodySprite;
 
+}
+
+public static class RoleExtensions
+{
+    private static readonly Dictionary<ICustomRole, bool> roleCanDoTasks = new Dictionary<ICustomRole, bool>();
+
+    public static void SetCanDoTasks(this ICustomRole role, bool value)
+    {
+        roleCanDoTasks[role] = value;
+    }
+
+    public static bool GetCanDoTasks(this ICustomRole role)
+    {
+        return roleCanDoTasks.TryGetValue(role, out var value) ? value : true;
+    }
 }

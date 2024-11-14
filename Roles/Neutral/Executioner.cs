@@ -28,15 +28,10 @@ public class Executioner : CrewmateRole, ICustomRole
         GhostRole = (RoleTypes)RoleId.Get<NeutralGhostRole>(),
     };
 
-    public override bool CanUse(IUsable usable)
-	{
-		if (!GameManager.Instance.LogicUsables.CanUse(usable, Player))
-		{
-			return false;
-		}
-		Console console = usable.Cast<Console>();
-		return !(console != null) || console.AllowImpostor;
-	}
+    public Executioner()
+    {
+        this.SetCanDoTasks(false);
+    }
 
     PlayerControl target;
 

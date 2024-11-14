@@ -28,15 +28,10 @@ public class Jester : CrewmateRole, ICustomRole
         GhostRole = (RoleTypes)RoleId.Get<NeutralGhostRole>(),
     };
 
-    public override bool CanUse(IUsable usable)
-	{
-		if (!GameManager.Instance.LogicUsables.CanUse(usable, Player))
-		{
-			return false;
-		}
-		Console console = usable.Cast<Console>();
-		return !(console != null) || console.AllowImpostor;
-	}
+    public Jester()
+    {
+        this.SetCanDoTasks(false);
+    }
 
     public string GetCustomEjectionMessage(NetworkedPlayerInfo player)
     {

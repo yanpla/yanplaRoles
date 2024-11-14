@@ -31,13 +31,8 @@ public class NeutralGhostRole : CrewmateGhostRole, ICustomRole
         return false;
     }
 
-    public override bool CanUse(IUsable usable)
-	{
-		if (!GameManager.Instance.LogicUsables.CanUse(usable, Player))
-		{
-			return false;
-		}
-		Console console = usable.Cast<Console>();
-		return !(console != null) || console.AllowImpostor;
-	}
+    public NeutralGhostRole()
+    {
+        this.SetCanDoTasks(false);
+    }
 }

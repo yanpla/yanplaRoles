@@ -35,16 +35,11 @@ public class Arsonist : CrewmateRole, ICustomRole
 
     public (bool Douse, bool Ignite) ResetTimer = (false, false ); // [0] = Douse, [1] = Ignite
 
-    public override bool CanUse(IUsable usable)
-	{
-		if (!GameManager.Instance.LogicUsables.CanUse(usable, Player))
-		{
-			return false;
-		}
-		Console console = usable.Cast<Console>();
-		return !(console != null) || console.AllowImpostor;
-	}
-
+    public Arsonist()
+    {
+        this.SetCanDoTasks(false);
+    }
+    
     public void HudUpdate(HudManager hudManager)
     {
         foreach (var playerId in dousedPlayers)
