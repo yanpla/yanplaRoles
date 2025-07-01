@@ -1,3 +1,10 @@
+🚨 This mod is deprecated and no longer maintained.
+
+yanplaRoles was initially created because I was bored and [Town Of Us Reactivated](https://github.com/eDonnes124/Town-Of-Us-R) was not updated to the latest Among Us version.
+[Town Of Us - MIRA](https://github.com/AU-Avengers/TOU-Mira) now fills that gap :), so please try out that mod.
+
+also shoutout to [NewMod](https://github.com/CallOfCreator/NewMod) for putting in the effort to make our mods compatible.
+
 # yanplaRoles
 `yanplaRoles` is a mod for the game Among Us that introduces new roles and modifiers.
 
