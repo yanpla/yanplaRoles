@@ -1,5 +1,6 @@
 using HarmonyLib;
 using MiraAPI.GameOptions;
+using MiraAPI.Modifiers;
 using UnityEngine.UI;
 using yanplaRoles.Options.Modifiers;
 
@@ -57,8 +58,8 @@ public class ShowHideButtons
 
     public static void Prefix(MeetingHud __instance)
     {
-        if (!MiraAPI.Utilities.Extensions.HasModifier<Guesser>(PlayerControl.LocalPlayer)) return;
-        var guesser = MiraAPI.Utilities.Extensions.GetModifier<Guesser>(PlayerControl.LocalPlayer);
+        if (!PlayerControl.LocalPlayer.HasModifier<Guesser>()) return;
+        var guesser = PlayerControl.LocalPlayer.GetModifier<Guesser>();
         if (!OptionGroupSingleton<GuesserOptions>.Instance.GuessAfterVoting) HideButtons(guesser);
     }
 }

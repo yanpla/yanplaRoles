@@ -6,11 +6,10 @@ using UnityEngine;
 
 namespace yanplaRoles.Options.Roles;
 
-public class JanitorOptions : AbstractOptionGroup
+public class JanitorOptions : AbstractOptionGroup<Janitor>
 { 
     public override string GroupName => "Janitor";
     public override Color GroupColor => Palette.ImpostorRed;
-    public override Type AdvancedRole => typeof(Janitor);
 
     public ModdedToggleOption JanitorCanVent { get; } = new("Can Vent", true);
 }

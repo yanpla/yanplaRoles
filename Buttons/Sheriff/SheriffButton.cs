@@ -4,17 +4,20 @@ using MiraAPI.Utilities.Assets;
 using UnityEngine;
 using yanplaRoles.Options.Roles;
 using MiraAPI.GameOptions;
+using MiraAPI.Keybinds;
 using MiraAPI.Networking;
+using Rewired;
 
 namespace yanplaRoles.Buttons.Sheriff;
 
-[RegisterButton]
 public class SheriffButton : CustomActionButton<PlayerControl>
 {
     public override string Name => "Shoot";
     public override float Cooldown => OptionGroupSingleton<SheriffOptions>.Instance.ShootCooldown;
     public override float EffectDuration => 0f;
     public override int MaxUses => 0; // 0 means unlimited uses.
+    public override MiraKeybind Keybind => MiraGlobalKeybinds.PrimaryAbility;
+    public override ButtonLocation Location => ButtonLocation.BottomRight;
     public override LoadableAsset<Sprite> Sprite => Assets.ExampleButton;
 
     public override bool Enabled(RoleBehaviour? role)

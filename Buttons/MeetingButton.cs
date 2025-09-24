@@ -3,12 +3,14 @@ using MiraAPI.Hud;
 using MiraAPI.Utilities;
 using MiraAPI.Utilities.Assets;
 using MiraAPI.GameOptions;
+using MiraAPI.Keybinds;
+using MiraAPI.Modifiers;
+using Rewired;
 using yanplaRoles.Options.Modifiers;
 using UnityEngine;
 
 namespace yanplaRoles.Buttons;
 
-[RegisterButton]
 public class MeetingButton : CustomActionButton
 {
     public override string Name => "Call Meeting";
@@ -18,6 +20,8 @@ public class MeetingButton : CustomActionButton
     public override float EffectDuration => 0;
 
     public override int MaxUses => (int)OptionGroupSingleton<CaptainOptions>.Instance.CaptainAbilityUses;
+    public override MiraKeybind Keybind => MiraGlobalKeybinds.ModifierPrimaryAbility;
+    public override ButtonLocation Location => ButtonLocation.BottomRight;
 
     public override LoadableAsset<Sprite> Sprite => Assets.EmergencyButton;
 

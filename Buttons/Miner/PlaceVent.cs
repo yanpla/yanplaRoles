@@ -4,17 +4,21 @@ using UnityEngine;
 using yanplaRoles.Options.Roles;
 using MiraAPI.GameOptions;
 using System.Linq;
+using MiraAPI.Keybinds;
+using Rewired;
 using yanplaRoles.rpc;
 
 namespace yanplaRoles.Buttons.Sheriff;
 
-[RegisterButton]
 public class PlaceVent : CustomActionButton
 {
     public override string Name => "Place Vent";
     public override float Cooldown => OptionGroupSingleton<MinerOptions>.Instance.MineCooldown;
     public override float EffectDuration => 0f;
     public override int MaxUses => (int)OptionGroupSingleton<MinerOptions>.Instance.MaxVents;
+    public override MiraKeybind Keybind => MiraGlobalKeybinds.PrimaryAbility;
+
+    public override ButtonLocation Location => ButtonLocation.BottomRight;
     public override LoadableAsset<Sprite> Sprite => Assets.Mine;
 
     public bool CanPlace { get; set; }

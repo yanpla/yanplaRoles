@@ -3,7 +3,6 @@ using UnityEngine;
 
 namespace yanplaRoles.Roles.Crewmate;
 
-[RegisterCustomRole]
 public class Sheriff : CrewmateRole, ICustomRole
 {
     public string RoleName => "Sheriff";

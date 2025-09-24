@@ -1,18 +1,21 @@
 using MiraAPI.Hud;
+using MiraAPI.Keybinds;
 using MiraAPI.Utilities;
 using MiraAPI.Utilities.Assets;
+using Rewired;
 using UnityEngine;
 using yanplaRoles.rpc;
 
 namespace yanplaRoles.Buttons.Janitor;
 
-[RegisterButton]
 public class CleanButton : CustomActionButton<DeadBody>
 {
     public override string Name => "";
     public override float Cooldown => 30f;
     public override float EffectDuration => 0f;
     public override int MaxUses => 0;
+    public override MiraKeybind Keybind => MiraGlobalKeybinds.PrimaryAbility;
+    public override ButtonLocation Location => ButtonLocation.BottomRight;
     public override LoadableAsset<Sprite> Sprite => Assets.CleanButton;
 
     public override void FixedUpdateHandler(PlayerControl playerControl)

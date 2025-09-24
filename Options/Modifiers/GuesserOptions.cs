@@ -2,10 +2,11 @@ using MiraAPI.GameOptions;
 using MiraAPI.GameOptions.Attributes;
 using MiraAPI.GameOptions.OptionTypes;
 using UnityEngine;
+using yanplaRoles.Modifiers.Guesser;
 
 namespace yanplaRoles.Options.Modifiers;
 
-public class GuesserOptions : AbstractOptionGroup
+public class GuesserOptions : AbstractOptionGroup<Guesser>
 { 
     public override string GroupName => "Guesser";
     public override Color GroupColor => Palette.ImpostorRed;

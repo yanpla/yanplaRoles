@@ -13,7 +13,6 @@ using MiraAPI.Utilities;
 
 namespace yanplaRoles.Modifiers.Guesser;
 
-[RegisterModifier]
 public class Guesser : GameModifier
 {
     public Dictionary<byte, (GameObject, GameObject, GameObject, TMP_Text)> Buttons { get; set; } = new();

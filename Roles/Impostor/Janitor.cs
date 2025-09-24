@@ -5,7 +5,6 @@ using yanplaRoles.Options.Roles;
 
 namespace yanplaRoles.Roles.Impostor;
 
-[RegisterCustomRole]
 public class Janitor : ImpostorRole, ICustomRole
 {
     public string RoleName => "Janitor";

@@ -11,14 +11,13 @@ using yanplaRoles.Modifiers;
 
 namespace yanplaRoles.Roles.Neutral;
 
-[RegisterCustomRole]
 public class Arsonist : CrewmateRole, ICustomRole
 {
     public string RoleName => "Arsonist";
     public string RoleDescription => "Douse everyone and ignite them";
     public string RoleLongDescription => RoleDescription;
     public Color RoleColor => new Color(1f, 0.3f, 0f);
-    public ModdedRoleTeams Team => ModdedRoleTeams.Neutral;
+    public ModdedRoleTeams Team => ModdedRoleTeams.Custom;
 
     public CustomRoleConfiguration Configuration => new CustomRoleConfiguration(this)
     {

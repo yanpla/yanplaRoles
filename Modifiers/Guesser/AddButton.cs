@@ -5,6 +5,7 @@ using MiraAPI.Utilities.Assets;
 using System.Reflection;
 using Reactor.Utilities.Extensions;
 using System;
+using MiraAPI.Modifiers;
 using TMPro;
 using yanplaRoles.Roles.Crewmate;
 
@@ -165,9 +166,9 @@ public class AddButton
             var players = PlayerControl.AllPlayerControls;
             foreach (var player in players)
             {
-                if (MiraAPI.Utilities.Extensions.HasModifier<Guesser>(player))
+                if (player.HasModifier<Guesser>())
                 {
-                    var assassin = MiraAPI.Utilities.Extensions.GetModifier<Guesser>(player);
+                    var assassin = player.GetModifier<Guesser>();
                     assassin.Guesses.Clear();
                     assassin.Buttons.Clear();
                     assassin.GuessedThisMeeting = false;
@@ -175,9 +176,9 @@ public class AddButton
             }
 
             if (PlayerControl.LocalPlayer.Data.IsDead) return;
-            if (!MiraAPI.Utilities.Extensions.HasModifier<Guesser>(PlayerControl.LocalPlayer)) return;
+            if (!PlayerControl.LocalPlayer.HasModifier<Guesser>()) return;
 
-            var guesser = MiraAPI.Utilities.Extensions.GetModifier<Guesser>(PlayerControl.LocalPlayer);
+            var guesser = PlayerControl.LocalPlayer.GetModifier<Guesser>();
             if (guesser.RemainingKills <= 0) return;
             foreach (var voteArea in __instance.playerStates)
             {

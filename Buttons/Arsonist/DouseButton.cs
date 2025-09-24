@@ -1,5 +1,6 @@
 using MiraAPI.GameOptions;
 using MiraAPI.Hud;
+using MiraAPI.Keybinds;
 using MiraAPI.Roles;
 using MiraAPI.Utilities;
 using MiraAPI.Utilities.Assets;
@@ -8,13 +9,13 @@ using yanplaRoles.Options.Roles;
 
 namespace yanplaRoles.Buttons.Arsonist;
 
-[RegisterButton]
 public class DouseButton : CustomActionButton<PlayerControl>
 {
     public override string Name => "";
     public override float Cooldown => OptionGroupSingleton<ArsonistOptions>.Instance.DouseCooldown;
     public override float EffectDuration => 0f;
     public override int MaxUses => 0;
+    public override MiraKeybind Keybind => MiraGlobalKeybinds.PrimaryAbility;
     public override LoadableAsset<Sprite> Sprite => Assets.Douse;
     public override ButtonLocation Location => ButtonLocation.BottomRight;
 

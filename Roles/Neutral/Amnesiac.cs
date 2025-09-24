@@ -11,14 +11,13 @@ using yanplaRoles.Options.Roles;
 
 namespace yanplaRoles.Roles.Neutral;
 
-[RegisterCustomRole]
 public class Amnesiac : CrewmateRole, ICustomRole
 {
     public string RoleName => "Amnesiac";
     public string RoleDescription => "Remember A Role Of A Deceased Player";
     public string RoleLongDescription => RoleDescription;
     public Color RoleColor => new Color(0.5f, 0.7f, 1f, 1f);
-    public ModdedRoleTeams Team => ModdedRoleTeams.Neutral;
+    public ModdedRoleTeams Team => ModdedRoleTeams.Custom;
 
     public ArrowBehaviour arrow;
     private Coroutine bodyCoroutine;

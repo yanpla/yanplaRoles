@@ -9,14 +9,13 @@ using yanplaRoles.Options.Roles;
 
 namespace yanplaRoles.Roles.Neutral;
 
-[RegisterCustomRole]
 public class Jester : CrewmateRole, ICustomRole
 {
     public string RoleName => "Jester";
     public string RoleDescription => "Get voted out to win";
     public string RoleLongDescription => RoleDescription;
     public Color RoleColor => new Color32(236, 98, 165, byte.MaxValue);
-    public ModdedRoleTeams Team => ModdedRoleTeams.Neutral;
+    public ModdedRoleTeams Team => ModdedRoleTeams.Custom;
 
     public CustomRoleConfiguration Configuration => new CustomRoleConfiguration(this)
     {

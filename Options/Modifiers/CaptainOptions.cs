@@ -3,10 +3,11 @@ using MiraAPI.Utilities;
 using MiraAPI.GameOptions.Attributes;
 using MiraAPI.GameOptions.OptionTypes;
 using UnityEngine;
+using yanplaRoles.Modifiers;
 
 namespace yanplaRoles.Options.Modifiers;
 
-public class CaptainOptions : AbstractOptionGroup
+public class CaptainOptions : AbstractOptionGroup<Captain>
 { 
     public override string GroupName => "Captain";
     public override Color GroupColor => new Color32(255, 215, 0, byte.MaxValue);

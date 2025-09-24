@@ -4,7 +4,6 @@ using UnityEngine;
 
 namespace yanplaRoles.Roles.Impostor;
 
-[RegisterCustomRole]
 public class Miner : ImpostorRole, ICustomRole
 {
     public string RoleName => "Miner";

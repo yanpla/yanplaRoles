@@ -9,7 +9,6 @@ using yanplaRoles.rpc;
 
 namespace yanplaRoles.Modifiers;
 
-[RegisterModifier]
 public class ExecutionerTarget : GameModifier
 {
     public override string ModifierName => "Executioner Target";

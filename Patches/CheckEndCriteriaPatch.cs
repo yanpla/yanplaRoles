@@ -35,7 +35,7 @@ public static class CheckEndCriteriaPatch
 
         if (GameData.Instance.TotalTasks <= GameData.Instance.CompletedTasks)
         {
-            GameManager.Instance.RpcEndGame(GameOverReason.HumansByTask, false);
+            GameManager.Instance.RpcEndGame(GameOverReason.CrewmatesByTask, false);
             return false;
         }
         

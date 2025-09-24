@@ -1,6 +1,7 @@
 using System.Linq;
 using UnityEngine;
 using Il2CppInterop.Runtime.InteropTypes.Arrays;
+using MiraAPI.Modifiers;
 using yanplaRoles.rpc;
 using MiraAPI.Networking;
 
@@ -30,7 +31,7 @@ public class GuesserKill
     }
     public static void AssassinKillCount(PlayerControl player, PlayerControl guesser)
     {
-        var assassinPlayer = MiraAPI.Utilities.Extensions.GetModifier<Guesser>(guesser);
+        var assassinPlayer = guesser.GetModifier<Guesser>();
         if (player == guesser) assassinPlayer.IncorrectAssassinKills += 1;
         else assassinPlayer.CorrectAssassinKills += 1;
     }

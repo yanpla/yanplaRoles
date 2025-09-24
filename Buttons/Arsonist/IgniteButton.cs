@@ -1,20 +1,24 @@
 using MiraAPI.GameOptions;
 using MiraAPI.Hud;
+using MiraAPI.Keybinds;
 using MiraAPI.Roles;
 using MiraAPI.Utilities;
 using MiraAPI.Utilities.Assets;
+using Rewired;
 using UnityEngine;
 using yanplaRoles.Options.Roles;
 
 namespace yanplaRoles.Buttons.Arsonist;
 
-[RegisterButton]
 public class IgniteButton : CustomActionButton<PlayerControl>
 {
     public override string Name => "";
     public override float Cooldown => OptionGroupSingleton<ArsonistOptions>.Instance.DouseCooldown;
     public override float EffectDuration => 0f;
     public override int MaxUses => 0;
+    public override MiraKeybind Keybind => MiraGlobalKeybinds.SecondaryAbility;
+    public override ButtonLocation Location => ButtonLocation.BottomRight;
+
     public override LoadableAsset<Sprite> Sprite => Assets.Ignite;
 
     public override bool Enabled(RoleBehaviour? role)
