@@ -14,7 +14,7 @@ public static class ShowRolesInMeetingPatch
         foreach (PlayerVoteArea playerVoteArea in __instance.playerStates)
         {
             var targetPlayer = Utils.PlayerById(playerVoteArea.TargetPlayerId);
-            var role = Utils.GetPlayerLastRole(targetPlayer.PlayerId);
+            var role = targetPlayer.Data.Role;
             playerVoteArea.ColorBlindName.transform.localPosition = new Vector3(-0.93f, -0.2f, -0.1f);
 
             if (
